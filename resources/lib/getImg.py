@@ -1,7 +1,9 @@
-import os
 import json
+import os
+
 import requests
 from PIL import Image, ImageOps
+
 
 def getItems():
     with open("../json/Items.json", 'r', encoding='utf-8') as fp:
@@ -24,4 +26,4 @@ def webp2png(path):
     print('%s ---> %s' %(path, dstimage))
 
 
-getItems()
+webp2png('char_358_lisa.webp')

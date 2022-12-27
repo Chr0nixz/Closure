@@ -1,5 +1,5 @@
-from ..ui import LoginWindow, GameWindow, GameCard
-from . import event
+from resources.lib import event
+from resources.ui import LoginWindow, GameWindow
 
 
 class WindowController():
@@ -8,12 +8,12 @@ class WindowController():
         self.loginwindow = LoginWindow.MainWindow()
         self.loginwindow.show()
         self.gamewindow = GameWindow.MainWindow()
-        self.gamecards = []
 
     def loginOK(self):
-        self.loginwindow.hide()
+        self.loginwindow.loginOK()
         self.addGames()
         self.gamewindow.addAnnouncement(event.getAnnouncement())
+        self.loginwindow.hide()
         self.gamewindow.show()
 
     def loginFailed(self):
@@ -26,8 +26,8 @@ class WindowController():
             i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
                                          'name': self.controller.getMapName(i['game_config']['mapId'])}
             num += 1
-            self.gamewindow.addFrame((-360 + (num % 3) * 400, (num // 3) * 270))
-            self.gamewindow.addCard(i, (-360 + (num % 3) * 400, (num // 3) * 270))
+            self.gamewindow.addFrame((35 + ((num + 2) % 3) * 400, (((num + 2) // 3) - 1) * 270))
+            self.gamewindow.addCard(i, (35 + ((num + 2) % 3) * 400, (((num + 2) // 3) - 1) * 270))
 
     def refreshGames(self):
         self.gamewindow.scrollArea.setWidget(self.gamewindow.scrollAreaWidgetContents)

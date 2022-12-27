@@ -33,6 +33,9 @@ class MainWindow(QMainWindow, UI_LoginWindow.Ui_LoginWindow):
             self.LoginButton.setEnabled(False)
             event.login(self.email_input.text(), self.password_input.text())
 
+    def loginOK(self):
+        self.statusbar.showMessage('登陆成功，正在跳转...')
+
     def loginFailed(self):
         QMessageBox.critical(self, 'Wrong!', '邮箱或密码错误', QMessageBox.Ok)
         self.email_input.setEnabled(True)
