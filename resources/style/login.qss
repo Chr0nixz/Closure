@@ -4,4 +4,17 @@
     color: #ffd740
 }}
 
+QPushButton:hover {{
+  color: #31363b;
+  background-color: #ffd740;
+}}
 
+.success:hover {{
+  color: #31363b;
+  background-color: #1BC4A0;
+}}
+
+.danger::hover {{
+  color: #31363b;
+  background-color: #dc3545;
+}}

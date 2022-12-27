@@ -61,3 +61,7 @@ def getAnnouncement():
 def refreshGames():
     windows.refreshGames()
     print('refresh')
+
+
+def getDetail():
+    windows.openDetail()

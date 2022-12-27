@@ -23,14 +23,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
-        self.charPic = QtWidgets.QLabel(self.centralwidget)
-        self.charPic.setMaximumSize(QtCore.QSize(200, 200))
-        self.charPic.setText("")
-        self.charPic.setObjectName("charPic")
-        self.verticalLayout.addWidget(self.charPic)
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout.addWidget(self.label_2)
         self.horizontalLayout.addLayout(self.verticalLayout)
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setWidgetResizable(True)
@@ -51,4 +43,3 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_2.setText(_translate("MainWindow", "TextLabel"))

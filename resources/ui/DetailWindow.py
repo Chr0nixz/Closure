@@ -10,7 +10,7 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/ui/char_358_lisa.png")
+        self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/img/icon.png")
 
     def addAssistantPic(self, img):
         self.charPic = CircleImage(self.centralwidget, 200, 200)

@@ -34,6 +34,7 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
         self.Map_label.setText(
             _translate("Form", data['game_config']['mapId']['code'] + ' ' + data['game_config']['mapId']['name']))
         self.AP_label.setText(_translate("Form", str(data['game_config']['keepingAP'])))
+        self.detailButton.clicked.connect(self.openDetail)
 
     def setLoginButton(self):
         self.statusButton.setProperty('class', 'success')
@@ -41,4 +42,7 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
     def setPauseButton(self):
         self.statusButton.setText('暂 停')
         self.statusButton.setProperty('class', 'danger')
+
+    def openDetail(self):
+        event.getDetail()
 

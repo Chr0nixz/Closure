@@ -1,5 +1,5 @@
 from resources.lib import event
-from resources.ui import LoginWindow, GameWindow
+from resources.ui import LoginWindow, GameWindow, DetailWindow
 
 
 class WindowController():
@@ -8,6 +8,7 @@ class WindowController():
         self.loginwindow = LoginWindow.MainWindow()
         self.loginwindow.show()
         self.gamewindow = GameWindow.MainWindow()
+        self.detailwindows = []
 
     def loginOK(self):
         self.loginwindow.loginOK()
@@ -31,3 +32,8 @@ class WindowController():
 
     def refreshGames(self):
         self.gamewindow.scrollArea.setWidget(self.gamewindow.scrollAreaWidgetContents)
+
+    def openDetail(self):
+        detail = DetailWindow.MainWindow()
+        detail.show()
+        self.detailwindows.append(detail)
