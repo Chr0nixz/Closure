@@ -29,3 +29,5 @@ class WindowController():
             self.gamewindow.addFrame((-360 + (num % 3) * 400, (num // 3) * 270))
             self.gamewindow.addCard(i, (-360 + (num % 3) * 400, (num // 3) * 270))
 
+    def refreshGames(self):
+        self.gamewindow.scrollArea.setWidget(self.gamewindow.scrollAreaWidgetContents)

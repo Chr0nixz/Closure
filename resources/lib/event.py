@@ -56,3 +56,8 @@ def getDefaultAccount():
 
 def getAnnouncement():
     return eventhandler.getAnnouncement()
+
+
+def refreshGames():
+    windows.refreshGames()
+    print('refresh')

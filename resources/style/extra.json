@@ -1,4 +1,7 @@
 {
   "font_family": "微软雅黑",
-  "font_size": "16px"
+  "font_size": "16px",
+  "danger": "#dc3545",
+  "warning": "#ffc107",
+  "success": "#17a2b8"
 }

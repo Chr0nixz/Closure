@@ -1,6 +1,7 @@
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QWidget
 from . import UI_GameCard
+from ..lib import event
 
 
 class Widget(QWidget, UI_GameCard.Ui_Form):
@@ -8,8 +9,8 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
         super().__init__(parent)
         self.setupUi(parent)
         self.setFixedSize(320, 240)
-        self.pushButton.clicked.connect(self.cli)
-        self.pushButton_2.clicked.connect(self.cli)
+        self.statusButton.clicked.connect(self.cli)
+        self.detailButton.clicked.connect(self.cli)
         self.setStyleSheet('background-color: #000000;')
         self.addGames(data)
         self.show()
@@ -24,7 +25,9 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
         self.Map_label.setText(
             _translate("Form", data['game_config']['mapId']['code'] + ' ' + data['game_config']['mapId']['name']))
         self.AP_label.setText(_translate("Form", str(data['game_config']['keepingAP'])))
+        self.statusButton.setProperty('class', 'success')
 
     def cli(self):
-        print(self.sender())
+        event.refreshGames()
+
 

@@ -127,7 +127,7 @@
          <number>30</number>
         </property>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="statusButton">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -140,13 +140,18 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
-           <string>开始</string>
+           <string>开 始</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="detailButton">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -159,8 +164,13 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
-           <string>详情</string>
+           <string>详 情</string>
           </property>
          </widget>
         </item>
