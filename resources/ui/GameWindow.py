@@ -1,5 +1,5 @@
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFrame
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFrame, QWidget
 from . import UI_GameWindow, GameCard
 from ..lib import event
 
@@ -14,19 +14,18 @@ class MainWindow(QMainWindow, UI_GameWindow.Ui_MainWindow):
 
     def addFrame(self, card):
         frame = QFrame(self.scrollAreaWidgetContents)
-        frame.resize(330, 250)
-        frame.move(card[0] - 5, card[1])
+        frame.resize(345, 255)
+        frame.move(card[0] - 15, card[1])
         frame.setFrameShape(QFrame.Box)
         frame.setStyleSheet('border-color: #ffd740;')
         print(frame.pos())
         self.gameframes.append(frame)
 
     def addCard(self, data, pos):
-        card = GameCard.Widget(self.scrollAreaWidgetContents, data)
-        card.horizontalLayoutWidget.move(pos[0], pos[1] + 5)
-        card.move(pos[0], pos[1] + 5)
-        card.setObjectName(data['config']['account'])
-        self.scrollAreaWidgetContents.setGeometry(0, 0, 1200, pos[1] + 260)
+        widget = QWidget(self.scrollAreaWidgetContents)
+        widget.move(pos[0], pos[1] + 5)
+        card = GameCard.Widget(widget, data)
+        self.scrollAreaWidgetContents.setGeometry(0, 0, 1200, pos[1] + 275)
         self.gamecards.append(card)
 
     def addAnnouncement(self, text):

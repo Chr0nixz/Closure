@@ -26,4 +26,3 @@ def webp2png(path):
     print('%s ---> %s' %(path, dstimage))
 
 
-webp2png('char_358_lisa.webp')

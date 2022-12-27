@@ -27,8 +27,8 @@ class WindowController():
             i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
                                          'name': self.controller.getMapName(i['game_config']['mapId'])}
             num += 1
-            self.gamewindow.addFrame((35 + ((num + 2) % 3) * 400, (((num + 2) // 3) - 1) * 270))
-            self.gamewindow.addCard(i, (35 + ((num + 2) % 3) * 400, (((num + 2) // 3) - 1) * 270))
+            self.gamewindow.addFrame((35 + ((num + 2) % 3) * 400, (((num + 2) // 3) - 1) * 275))
+            self.gamewindow.addCard(i, (35 + ((num + 2) % 3) * 400, (((num + 2) // 3) - 1) * 275))
 
     def refreshGames(self):
         self.gamewindow.scrollArea.setWidget(self.gamewindow.scrollAreaWidgetContents)

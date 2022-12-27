@@ -17,6 +17,9 @@
    <iconset>
     <normaloff>../img/icon_128.ico</normaloff>../img/icon_128.ico</iconset>
   </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">

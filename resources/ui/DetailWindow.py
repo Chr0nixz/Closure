@@ -11,8 +11,14 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/img/icon.png")
+        self.addAP()
 
     def addAssistantPic(self, img):
         self.charPic = CircleImage(self.centralwidget, 200, 200)
         self.charPic.setImage(img)
-        self.verticalLayout.addWidget(self.charPic)
+        self.doctorLayout.addWidget(self.charPic, 1, 1)
+
+    def addAP(self):
+        self.APLabel = QLabel()
+        self.APLabel.setText('理智：')
+        self.doctorLayout.addWidget(self.APLabel, 2, 1)
