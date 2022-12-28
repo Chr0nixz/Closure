@@ -37,5 +37,3 @@ def webp2png(path):
     image.save(dstimage)
     print('%s ---> %s' % (path, dstimage))
 
-
-getChars()
