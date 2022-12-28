@@ -27,8 +27,8 @@ class WindowController():
             i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
                                          'name': self.controller.getMapName(i['game_config']['mapId'])}
             num += 1
-            self.gamewindow.addFrame((35 + ((num + 2) % 3) * 400, (((num + 2) // 3) - 1) * 275))
-            self.gamewindow.addCard(i, (35 + ((num + 2) % 3) * 400, (((num + 2) // 3) - 1) * 275))
+            self.gamewindow.addFrame()
+            self.gamewindow.addCard(i)
 
     def refreshGames(self):
         self.gamewindow.scrollArea.setWidget(self.gamewindow.scrollAreaWidgetContents)
@@ -37,3 +37,20 @@ class WindowController():
         detail = DetailWindow.MainWindow()
         detail.show()
         self.detailwindows.append(detail)
+
+    def gameCardFlex(self, width, height):
+        col = width // 380
+        space = (width - col * 400) / col / 2
+        maxheight = 0
+        num = 0
+        for i in self.gamewindow.gameframes:
+            num += 1
+            frameheight = (((num + col - 1) // col) - 1) * 275
+            i.move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 15, (((num + col - 1) // col) - 1) * 275)
+            if frameheight + 260 > maxheight:
+                maxheight = frameheight + 260
+        num = 0
+        for i in self.gamewindow.gamecards:
+            num += 1
+            i.parent().move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 30, (((num + col - 1) // col) - 1) * 275 + 5)
+        self.gamewindow.scrollAreaWidgetContents.setGeometry(0, 0, width, maxheight)

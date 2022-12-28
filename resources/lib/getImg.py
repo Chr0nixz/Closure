@@ -12,7 +12,19 @@ def getItems():
         j = data[i]['icon']
         path = os.path.abspath(os.path.join(os.getcwd(), "../")) + '\\items\\' + j + '.webp'
         if not os.path.isfile(path):
-            res = requests.get('https://ak.dzp.me/dst/items/'+j+'.webp')
+            res = requests.get('https://ak.dzp.me/dst/items/' + j + '.webp')
+            if res.status_code == 200:
+                open(path, 'wb').write(res.content)
+                webp2png(path)
+
+
+def getChars():
+    with open('../json/gamedata/char_meta_table.json', 'r', encoding='utf-8') as fp:
+        data = json.load(fp)
+    for i in data['spCharGroups']:
+        path = os.path.abspath(os.path.join(os.getcwd(), "../")) + '\\chars\\' + i + '.webp'
+        if not os.path.isfile(path):
+            res = requests.get('https://ak.dzp.me/dst/avatar/ASSISTANT/' + i + '.webp')
             if res.status_code == 200:
                 open(path, 'wb').write(res.content)
                 webp2png(path)
@@ -23,6 +35,7 @@ def webp2png(path):
     image = ImageOps.exif_transpose(image)
     dstimage = os.path.splitext(path)[0] + '.png'
     image.save(dstimage)
-    print('%s ---> %s' %(path, dstimage))
+    print('%s ---> %s' % (path, dstimage))
 
 
+getChars()

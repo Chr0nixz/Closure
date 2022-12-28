@@ -65,3 +65,7 @@ def refreshGames():
 
 def getDetail():
     windows.openDetail()
+
+
+def gameCardFlex(width, height):
+    windows.gameCardFlex(width, height)
