@@ -6,11 +6,12 @@ from ..lib import event
 
 
 class Widget(QWidget, UI_GameCard.Ui_Form):
-    def __init__(self, parent, data):
+    def __init__(self, parent, data, num):
         super().__init__(parent)
         self.setupUi(parent)
         self.setFixedSize(320, 240)
         self.setStyleSheet('background-color: #000000;')
+        self.num = num
         self.addGames(data)
         self.show()
 
@@ -36,8 +37,40 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
         self.AP_label.setText(_translate("Form", str(data['game_config']['keepingAP'])))
         self.detailButton.clicked.connect(self.openDetail)
 
+
+    def refresh(self, account):
+        if len(account) < self.num + 1:
+            self.deleteLater()
+        data = account[self.num]
+        _translate = QtCore.QCoreApplication.translate
+        self.hide()
+        if data['config']['platform'] == 1:
+            self.Account_label.setText(_translate("Form", '账号：' + data['config']['account'] + '（官服）'))
+        else:
+            self.Account_label.setText(_translate("Form", '账号：' + data['config']['account'] + '（B服）'))
+        if data['config']['isPause']:
+            self.Status_label.setText(_translate("Form", '暂停中'))
+            self.statusButton.setProperty('class', 'success')
+        else:
+            self.Status_label.setText(_translate("Form", data['status']['text']))
+            match data['status']['code']:
+                case -1: self.setLoginButton()
+                case 0: self.setLoginButton()
+                case 1: self.statusButton.setEnabled(False)
+                case 2: self.setPauseButton()
+                case 3: self.setLoginButton()
+        self.Map_label.setText(
+            _translate("Form", data['game_config']['mapId']['code'] + ' ' + data['game_config']['mapId']['name']))
+        self.AP_label.setText(_translate("Form", str(data['game_config']['keepingAP'])))
+        self.statusButton.setProperty('class', 'danger')
+        self.update()
+        self.show()
+
+
+
     def setLoginButton(self):
-        self.statusButton.setProperty('class', 'success')
+        self.statusButton.setText('开 始')
+        self.statusButton.setProperty('class', 'success', )
 
     def setPauseButton(self):
         self.statusButton.setText('暂 停')

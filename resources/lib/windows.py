@@ -26,19 +26,24 @@ class WindowController():
         for i in accounts:
             i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
                                          'name': self.controller.getMapName(i['game_config']['mapId'])}
-            num += 1
             self.gamewindow.addFrame()
-            self.gamewindow.addCard(i)
+            self.gamewindow.addCard(i, num)
+            num += 1
 
-    def refreshGames(self):
-        self.gamewindow.scrollArea.setWidget(self.gamewindow.scrollAreaWidgetContents)
+    def refreshGames(self, accounts):
+        num = 0
+        for i in accounts:
+            i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
+                                         'name': self.controller.getMapName(i['game_config']['mapId'])}
+            self.gamewindow.gamecards[num].refresh(accounts)
+
 
     def openDetail(self):
         detail = DetailWindow.MainWindow()
         detail.show()
         self.detailwindows.append(detail)
 
-    def gameCardFlex(self, width, height):
+    def gameCardFlex(self, width):
         col = width // 380
         space = (width - col * 400) / col / 2
         maxheight = 0

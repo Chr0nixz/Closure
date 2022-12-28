@@ -59,13 +59,13 @@ def getAnnouncement():
 
 
 def refreshGames():
-    windows.refreshGames()
-    print('refresh')
+    windows.refreshGames(eventhandler.getGames())
+
 
 
 def getDetail():
     windows.openDetail()
 
 
-def gameCardFlex(width, height):
-    windows.gameCardFlex(width, height)
+def gameCardFlex(width):
+    windows.gameCardFlex(width)
