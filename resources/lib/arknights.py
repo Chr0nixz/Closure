@@ -93,3 +93,14 @@ class MainController():
             if data['code'] == 1:
                 return data['data']
 
+    def getDetail(self, account, platform):
+        try:
+            headers = {'Authorization': self.token}
+            res = requests.get(url + 'Game/' + account + '/' + platform, headers=headers)
+            if res.status_code == 200:
+                data = json.loads(res.text)
+                if data['code'] == 1:
+                    return data['data']
+        except Exception:
+            pass
+

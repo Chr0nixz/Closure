@@ -62,9 +62,8 @@ def refreshGames():
     windows.refreshGames(eventhandler.getGames())
 
 
-
-def getDetail():
-    windows.openDetail()
+def getDetail(account, platform):
+    windows.openDetail(eventhandler.getDetail(account, platform))
 
 
 def gameCardFlex(width):

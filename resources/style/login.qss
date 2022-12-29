@@ -18,3 +18,5 @@ QPushButton:hover {{
   color: #31363b;
   background-color: #dc3545;
 }}
+
+

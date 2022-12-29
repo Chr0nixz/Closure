@@ -17,7 +17,7 @@ if __name__ == '__main__':
     stylesheet = app.styleSheet()
     with open("resources/style/login.qss", encoding='utf-8') as file:
         app.setStyleSheet(stylesheet + file.read().format(**os.environ))
-        print(file.read().format(**os.environ))
+        print(stylesheet)
     controller = MainController()
     configs = config.Config(os.path.join(os.getcwd(), 'Config.json'))
     event.addHandler(controller)

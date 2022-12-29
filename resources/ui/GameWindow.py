@@ -21,7 +21,7 @@ class MainWindow(QMainWindow, UI_GameWindow.Ui_MainWindow):
         frame = QFrame(self.scrollAreaWidgetContents)
         frame.resize(345, 255)
         frame.setFrameShape(QFrame.Box)
-        frame.setStyleSheet('border-color: #ffd740; background-color: #25292C')
+        frame.setStyleSheet('border-color: #ffd740;')
         print(frame.pos())
         self.gameframes.append(frame)
 

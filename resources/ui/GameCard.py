@@ -12,6 +12,9 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
         self.setupUi(parent)
         self.setFixedSize(320, 240)
         self.num = num
+        self.account = data['config']['account']
+        self.platform = data['config']['platform']
+        self.detailButton.setEnabled(False)
         self.addGames(data)
 
     def addGames(self, data):
@@ -55,21 +58,27 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
 
     def addContent(self, data):
         _translate = QtCore.QCoreApplication.translate
-        if data['config']['platform'] == 1:
-            self.Account_label.setText(_translate("Form", '账号：' + data['config']['account'] + '（官服）'))
+        if self.platform == 1:
+            self.Account_label.setText(_translate("Form", '账号：' + self.account + '（官服）'))
         else:
-            self.Account_label.setText(_translate("Form", '账号：' + data['config']['account'] + '（B服）'))
+            self.Account_label.setText(_translate("Form", '账号：' + self.account + '（B服）'))
         if data['config']['isPause']:
             self.Status_label.setText(_translate("Form", '暂停中'))
             self.setLoginButton()
         else:
             self.Status_label.setText(_translate("Form", data['status']['text']))
             match data['status']['code']:
-                case -1: self.setLoginButton()
-                case 0: self.setLoginButton()
-                case 1: self.statusButton.setEnabled(False)
-                case 2: self.setPauseButton()
-                case 3: self.setLoginButton()
+                case -1:
+                    self.setLoginButton()
+                case 0:
+                    self.setLoginButton()
+                case 1:
+                    self.statusButton.setEnabled(False)
+                case 2:
+                    self.setPauseButton()
+                    self.detailButton.setEnabled(True)
+                case 3:
+                    self.setLoginButton()
         self.Map_label.setText(
             _translate("Form", data['game_config']['mapId']['code'] + ' ' + data['game_config']['mapId']['name']))
         self.AP_label.setText(_translate("Form", str(data['game_config']['keepingAP'])))
@@ -89,5 +98,5 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
         self.detailButton.setIcon(qta.icon('mdi.card-account-details-star', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
 
     def openDetail(self):
-        event.getDetail()
+        event.getDetail(self.account, self.platform)
 
