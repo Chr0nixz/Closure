@@ -69,3 +69,7 @@ def getDetail():
 
 def gameCardFlex(width):
     windows.gameCardFlex(width)
+
+
+def loginTimeout():
+    pass

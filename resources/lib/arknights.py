@@ -45,9 +45,10 @@ class MainController():
         return items, stage
 
     def login(self, email, password) -> bool:
-        res = requests.get(url + 'Auth/' + email + '/' + password)
-        if res.status_code == 200:
-            data = json.loads(res.text)
+        try:
+            res = requests.get(url + 'Auth/' + email + '/' + password)
+            if res.status_code == 200:
+                data = json.loads(res.text)
             if data['code'] == 1:
                 token = data['data']['token']
                 print(data['message'])
@@ -56,14 +57,21 @@ class MainController():
                 return True
             else:
                 return False
+        except Exception:
+            event.loginTimeout()
+            return False
+
 
     def getGames(self) -> list:
-        headers = {'Authorization': self.token}
-        res = requests.get(url=url + 'Game/', headers=headers)
-        if res.status_code == 200:
-            data = json.loads(res.text)
-            print(data['message'])
-            return data['data']
+        try:
+            headers = {'Authorization': self.token}
+            res = requests.get(url=url + 'Game/', headers=headers)
+            if res.status_code == 200:
+                data = json.loads(res.text)
+                print(data['message'])
+                return data['data']
+        except Exception:
+            return None
 
     def getMapCode(self, id):
         if id == '':

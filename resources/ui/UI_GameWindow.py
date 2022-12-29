@@ -54,6 +54,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.refreshButton.setFont(font)
+        self.refreshButton.setIconSize(QtCore.QSize(24, 24))
         self.refreshButton.setObjectName("refreshButton")
         self.verticalLayout_3.addWidget(self.refreshButton)
         self.horizontalLayout.addLayout(self.verticalLayout_3)
@@ -101,6 +102,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "可露希尔"))
-        self.label_2.setText(_translate("MainWindow", "平台公告"))
+        self.label_2.setText(_translate("MainWindow", "平台公告🎉🎉"))
         self.label.setText(_translate("MainWindow", "公告"))
         self.refreshButton.setText(_translate("MainWindow", "刷 新"))

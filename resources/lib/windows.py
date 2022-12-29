@@ -1,3 +1,5 @@
+from PyQt5.QtWidgets import QMessageBox
+
 from resources.lib import event
 from resources.ui import LoginWindow, GameWindow, DetailWindow
 
@@ -22,21 +24,27 @@ class WindowController():
 
     def addGames(self):
         accounts = self.controller.getGames()
-        num = 0
-        for i in accounts:
-            i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
-                                         'name': self.controller.getMapName(i['game_config']['mapId'])}
-            self.gamewindow.addFrame()
-            self.gamewindow.addCard(i, num)
-            num += 1
+        if accounts:
+            num = 0
+            for i in accounts:
+                i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
+                                             'name': self.controller.getMapName(i['game_config']['mapId'])}
+                self.gamewindow.addFrame()
+                self.gamewindow.addCard(i, num)
+                num += 1
+        else:
+            QMessageBox.warning(self, 'Warning!', '请输入正确的邮箱和密码', QMessageBox.Ok)
+            self.loginwindow = LoginWindow.MainWindow()
+            self.loginwindow.show()
 
     def refreshGames(self, accounts):
         num = 0
         for i in accounts:
             i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
                                          'name': self.controller.getMapName(i['game_config']['mapId'])}
-            self.gamewindow.gamecards[num].refresh(accounts)
-
+        for i in self.gamewindow.gamecards:
+            i.refresh(accounts[num])
+            num += 1
 
     def openDetail(self):
         detail = DetailWindow.MainWindow()
@@ -57,5 +65,6 @@ class WindowController():
         num = 0
         for i in self.gamewindow.gamecards:
             num += 1
-            i.parent().move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 30, (((num + col - 1) // col) - 1) * 275 + 5)
+            i.parent().move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 30,
+                            (((num + col - 1) // col) - 1) * 275 + 5)
         self.gamewindow.scrollAreaWidgetContents.setGeometry(0, 0, width, maxheight)
