@@ -22,6 +22,7 @@ def addConfig(config):
 
 class LoginThread(QThread):
     loginsignal = pyqtSignal(bool)
+
     def __init__(self, email, password):
         super().__init__()
         self.email = email
@@ -76,9 +77,13 @@ def getDefaultAccount():
     return configs.config.get('account')
 
 
-
 def getAnnouncement():
     return eventhandler.getAnnouncement()
+
+
+class refreshGamesThread(QThread):
+    def __init__(self):
+        super().__init__()
 
 
 def refreshGames():
@@ -95,6 +100,7 @@ def gameCardFlex(width):
 
 class gameLoginThread(QThread):
     gameloginsignal = pyqtSignal(bool)
+
     def __init__(self, account, platform):
         super().__init__()
         self.account = account
@@ -109,6 +115,7 @@ def gameLogin(account, platform):
     th = gameLoginThread()
     th.start()
     th.exec()
+
 
 def gameLoginResult(result):
     pass

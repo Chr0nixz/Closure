@@ -13,9 +13,9 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/img/icon.png")
 
     def addAssistantPic(self, img):
-        self.charPic = CircleImage(self.centralwidget, 0, 0, 200, 200)
+        self.charPic = CircleImage(self.centralwidget, 0, 0, 150, 150)
         self.charPic.setImage(img)
-        self.charPic.setFixedSize(200, 200)
+        self.charPic.setFixedSize(150, 150)
         self.doctorChart.CharLayout.addWidget(self.charPic)
 
     def addChart(self):
