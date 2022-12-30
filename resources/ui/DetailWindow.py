@@ -1,8 +1,6 @@
-from PyQt5.QtWidgets import QMainWindow, QLabel
-from PyQt5.QtGui import QPixmap, QPainter, QPainterPath
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QMainWindow, QWidget
 
-from resources.ui import UI_DetailWindow
+from resources.ui import UI_DetailWindow, DoctorChart
 from resources.ui.CircleImage import CircleImage
 
 
@@ -10,15 +8,17 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        self.addChart()
         self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/img/icon.png")
-        self.addAP()
 
     def addAssistantPic(self, img):
-        self.charPic = CircleImage(self.centralwidget, 200, 200)
+        self.charPic = CircleImage(self.centralwidget, 0, 0, 200, 200)
         self.charPic.setImage(img)
-        self.doctorLayout.addWidget(self.charPic, 1, 1)
+        self.charPic.setFixedSize(200, 200)
+        self.doctorChart.CharLayout.addWidget(self.charPic)
 
-    def addAP(self):
-        self.APLabel = QLabel()
-        self.APLabel.setText('理智：')
-        self.doctorLayout.addWidget(self.APLabel, 2, 1)
+    def addChart(self):
+        widget = QWidget(self.centralwidget)
+        self.doctorChart = DoctorChart.Widget(widget)
+        self.doctorLayout.addWidget(widget, 1, 1)

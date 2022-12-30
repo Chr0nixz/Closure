@@ -9,29 +9,6 @@ url = "https://api.arknights.host/"
 respath = './resources/json/'
 
 
-class Account():
-    def __init__(self, data):
-        self.data = data
-        self.account = data['config']['account']
-        self.platform = data['config']['platform']
-        self.isPause = data['config']['isPause']
-        self.status = data['status']['code']
-        self.statusText = data['status']['text']
-        self.mapId = data['game_config']['mapId']
-        self.battleMaps = data['game_config']['battleMaps']
-        self.keepingAP = data['game_config']['keepingAP']
-
-    def __str__(self):
-        str = "游戏账号：" + self.account + "\n"
-        if self.isPause:
-            str += "账号状态：暂停中\n"
-        else:
-            str += "账号状态：" + self.statusText + "\n"
-        if self.mapId:
-            str += "当前地图：" + stage[self.mapId]['code'] + ' ' + stage[self.mapId]['name'] + "\n"
-        return str
-
-
 class MainController():
     def __init__(self):
         self.token = None
@@ -94,13 +71,27 @@ class MainController():
                 return data['data']
 
     def getDetail(self, account, platform):
+        headers = {'Authorization': self.token}
         try:
-            headers = {'Authorization': self.token}
             res = requests.get(url + 'Game/' + account + '/' + platform, headers=headers)
             if res.status_code == 200:
                 data = json.loads(res.text)
                 if data['code'] == 1:
                     return data['data']
+        except Exception:
+            pass
+
+    def gameLogin(self, account, platform):
+        body = {'account': account, 'platform': platform}
+        try:
+            res = requests.get(url + 'Game/Login/', data=json.dumps(body))
+            if res.status_code == 200:
+                data = json.loads(res.text)
+                if data['code'] == 1:
+                    print()
+                    return True
+                else:
+                    return False
         except Exception:
             pass
 

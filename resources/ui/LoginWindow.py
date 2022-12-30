@@ -1,7 +1,9 @@
 import re
 
-from PyQt5 import QtCore, QtGui
+from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
+import qtawesome as qta
+
 from . import UI_LoginWindow
 from ..lib import event
 
@@ -10,11 +12,11 @@ class MainWindow(QMainWindow, UI_LoginWindow.Ui_LoginWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.resize(500, 600)
-        self.setFixedSize(500, 600)
+        self.resize(450, 600)
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
         self.setWindowOpacity(0.96)
         self.Label_closure.setProperty('class', 'closure_label')
+        self.LoginButton.setIcon(qta.icon('mdi.login', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
         self.LoginButton.clicked.connect(self.login)
         default = event.getDefaultAccount()
         if default:
@@ -32,9 +34,6 @@ class MainWindow(QMainWindow, UI_LoginWindow.Ui_LoginWindow):
             self.password_input.setEnabled(False)
             self.LoginButton.setEnabled(False)
             event.login(self.email_input.text(), self.password_input.text())
-
-    def loginOK(self):
-        self.statusbar.showMessage('登陆成功，正在跳转...')
 
     def loginFailed(self):
         QMessageBox.critical(self, 'Wrong!', '邮箱或密码错误', QMessageBox.Ok)

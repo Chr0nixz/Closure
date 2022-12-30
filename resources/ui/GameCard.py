@@ -1,12 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QWidget
 import qtawesome as qta
 
 from . import UI_GameCard
 from ..lib import event
 
 
-class Widget(QWidget, UI_GameCard.Ui_Form):
+class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
     def __init__(self, parent, data, num):
         super().__init__(parent)
         self.setupUi(parent)
@@ -14,7 +13,7 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
         self.num = num
         self.account = data['config']['account']
         self.platform = data['config']['platform']
-        self.detailButton.setEnabled(False)
+        #self.detailButton.setEnabled(False)
         self.addGames(data)
 
     def addGames(self, data):
@@ -53,6 +52,8 @@ class Widget(QWidget, UI_GameCard.Ui_Form):
         detailButton.setFont(font)
         detailButton.setObjectName("detailButton")
         detailButton.setText(' 详 情')
+        detailButton.setIconSize(QtCore.QSize(20, 20))
+        detailButton.setEnabled(False)
         self.horizontalLayout.addWidget(detailButton)
         return detailButton
 

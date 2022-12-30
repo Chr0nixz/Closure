@@ -4,10 +4,12 @@ from PyQt5.QtCore import Qt, QRect
 
 
 class CircleImage(QLabel):
-    def __init__(self, parent, width, height):
+    def __init__(self, parent, x, y, width, height):
         super().__init__(parent)
         self.resize(width, height)
         self.circleImage = None
+        self.x = x
+        self.y = y
 
     def setImage(self, image):
         self.circleImage = QPixmap(image)
@@ -17,9 +19,9 @@ class CircleImage(QLabel):
         painter.begin(self)
         painter.setRenderHints(QPainter.Antialiasing | QPainter.SmoothPixmapTransform, True)
         path = QPainterPath()
-        path.addEllipse(0, 0, self.width(), self.height())
+        path.addEllipse(self.x, self.y, self.x + self.width(), self.y + self.height())
         painter.setClipPath(path)
-        painter.drawPixmap(0, 0, self.width(), self.height(), self.circleImage)
+        painter.drawPixmap(self.x, self.y, self.x + self.width(), self.y + self.height(), self.circleImage)
         painter.end()
         self.setPixmap(pixmap)
 

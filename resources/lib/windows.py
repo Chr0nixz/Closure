@@ -12,9 +12,8 @@ class WindowController():
         self.gamewindow = GameWindow.MainWindow()
         self.detailwindows = []
 
-    def loginOK(self):
-        self.loginwindow.loginOK()
-        self.addGames()
+    def loginOK(self, accounts):
+        self.addGames(accounts)
         self.gamewindow.addAnnouncement(event.getAnnouncement())
         self.loginwindow.hide()
         self.gamewindow.show()
@@ -22,8 +21,7 @@ class WindowController():
     def loginFailed(self):
         self.loginwindow.loginFailed()
 
-    def addGames(self):
-        accounts = self.controller.getGames()
+    def addGames(self, accounts):
         if accounts:
             num = 0
             for i in accounts:
