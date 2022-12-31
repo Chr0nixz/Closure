@@ -10,7 +10,7 @@ class WindowController():
         self.loginwindow = LoginWindow.MainWindow()
         self.loginwindow.show()
         self.gamewindow = GameWindow.MainWindow()
-        self.detailwindows = []
+        self.detailwindows = {}
 
     def loginOK(self, accounts):
         self.addGames(accounts)
@@ -44,10 +44,10 @@ class WindowController():
             i.refresh(accounts[num])
             num += 1
 
-    def openDetail(self):
-        detail = DetailWindow.MainWindow()
+    def openDetail(self, data):
+        detail = DetailWindow.MainWindow(data['status'])
         detail.show()
-        self.detailwindows.append(detail)
+        self.detailwindows[data['account']] = detail
 
     def gameCardFlex(self, width):
         col = width // 380

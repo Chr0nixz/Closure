@@ -51,7 +51,7 @@ class MainController():
         return data
 
     def getDetail(self, account, platform):
-        data = router.get(url=url + 'Game/' + account + '/' + platform, auth=self.token)
+        data = router.get(url=url + 'Game/' + account + '/' + str(platform), auth=self.token)
         return data
 
     def gameLogin(self, account, platform):

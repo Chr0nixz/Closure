@@ -61,7 +61,13 @@ def refreshGames():
 
 
 def getDetail(account, platform):
-    windows.openDetail()
+    th = threads.getDetailThread(account, platform)
+    th.start()
+    th.exec()
+
+
+def addDetail(data):
+    windows.openDetail(data)
 
 
 def gameCardFlex(width):

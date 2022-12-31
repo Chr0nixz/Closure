@@ -5,11 +5,10 @@ from resources.ui.CircleImage import CircleImage
 
 
 class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
-    def __init__(self):
+    def __init__(self, data):
         super().__init__()
         self.setupUi(self)
-
-        self.addChart()
+        self.addChart(data)
         self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/img/icon.png")
 
     def addAssistantPic(self, img):
@@ -18,7 +17,8 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         self.charPic.setFixedSize(150, 150)
         self.doctorChart.CharLayout.addWidget(self.charPic)
 
-    def addChart(self):
+    def addChart(self, data):
         widget = QWidget(self.centralwidget)
         self.doctorChart = DoctorChart.Widget(widget)
+        self.doctorChart.addContent(data)
         self.doctorLayout.addWidget(widget, 1, 1)

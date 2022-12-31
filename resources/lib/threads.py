@@ -46,3 +46,17 @@ class gameLoginThread(QThread):
     def run(self) -> None:
         self.gameloginsignal.emit(event.eventhandler.gameLogin(self.account, self.platform))
 
+
+class getDetailThread(QThread):
+    detailsignal = pyqtSignal(dict)
+    def __init__(self, account, platform):
+        super().__init__()
+        self.account = account
+        self.platform = platform
+        self.detailsignal.connect(event.addDetail)
+
+    def run(self) -> None:
+        data = event.eventhandler.getDetail(self.account, self.platform)
+        data['account'] = self.account
+        self.detailsignal.emit(data)
+

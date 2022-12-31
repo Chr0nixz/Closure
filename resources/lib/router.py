@@ -1,7 +1,6 @@
 # TODO： 网络传输分离
-import json, requests
-
-from requests import Response
+import json
+import requests
 
 
 def get(url, auth=None, body=None):
