@@ -38,9 +38,6 @@
        <bold>true</bold>
       </font>
      </property>
-     <property name="styleSheet">
-      <string notr="true">color: #ffd740</string>
-     </property>
      <property name="text">
       <string>Dr.Name</string>
      </property>

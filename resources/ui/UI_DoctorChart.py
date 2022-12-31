@@ -28,7 +28,6 @@ class Ui_Form(object):
         font.setBold(True)
         font.setWeight(75)
         self.NickName.setFont(font)
-        self.NickName.setStyleSheet("color: #ffd740")
         self.NickName.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.NickName.setObjectName("NickName")
         self.verticalLayout_2.addWidget(self.NickName)
