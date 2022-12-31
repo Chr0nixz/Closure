@@ -25,14 +25,13 @@ class MainController():
         data = router.get(url=url + 'Auth/' + email + '/' + password)
         if data:
             self.token = data['token']
-            self.auth = {{'Authorization': self.token}}
             event.configAccount(email, password)
             return True
         else:
             return False
 
     def getGames(self) -> list:
-        data = router.get(url=url + 'Game/', auth=self.auth)
+        data = router.get(url=url + 'Game/', auth=self.token)
         return data
 
     def getMapCode(self, id):
@@ -48,17 +47,12 @@ class MainController():
             return self.stage[id]['name']
 
     def getAnnouncement(self):
-        data = router.get(url=url + 'System/Announcement', auth=self.auth)
+        data = router.get(url=url + 'System/Announcement', auth=self.token)
         return data
 
     def getDetail(self, account, platform):
-        data = router.get(url=url + 'Game/' + account + '/' + platform, auth=self.auth)
+        data = router.get(url=url + 'Game/' + account + '/' + platform, auth=self.token)
         return data
-        headers = {'Authorization': self.token}
-        if data:
-            return True
-        else:
-            return False
 
     def gameLogin(self, account, platform):
         body = {'account': account, 'platform': platform}
