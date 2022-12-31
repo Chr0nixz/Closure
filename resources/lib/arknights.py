@@ -3,7 +3,7 @@ import os
 
 import requests
 
-from . import event
+from . import event, router
 
 url = "https://api.arknights.host/"
 respath = './resources/json/'
@@ -22,33 +22,18 @@ class MainController():
         return items, stage
 
     def login(self, email, password) -> bool:
-        try:
-            res = requests.get(url + 'Auth/' + email + '/' + password)
-            if res.status_code == 200:
-                data = json.loads(res.text)
-            if data['code'] == 1:
-                token = data['data']['token']
-                print(data['message'])
-                self.token = token
-                event.configAccount(email, password)
-                return True
-            else:
-                return False
-        except Exception:
-            event.loginTimeout()
+        data = router.get(url=url + 'Auth/' + email + '/' + password)
+        if data:
+            self.token = data['token']
+            self.auth = {{'Authorization': self.token}}
+            event.configAccount(email, password)
+            return True
+        else:
             return False
 
-
     def getGames(self) -> list:
-        try:
-            headers = {'Authorization': self.token}
-            res = requests.get(url=url + 'Game/', headers=headers)
-            if res.status_code == 200:
-                data = json.loads(res.text)
-                print(data['message'])
-                return data['data']
-        except Exception:
-            return None
+        data = router.get(url=url + 'Game/', auth=self.auth)
+        return data
 
     def getMapCode(self, id):
         if id == '':
@@ -63,35 +48,19 @@ class MainController():
             return self.stage[id]['name']
 
     def getAnnouncement(self):
-        headers = {'Authorization': self.token}
-        res = requests.get(url + 'System/Announcement', headers=headers)
-        if res.status_code == 200:
-            data = json.loads(res.text)
-            if data['code'] == 1:
-                return data['data']
+        data = router.get(url=url + 'System/Announcement', auth=self.auth)
+        return data
 
     def getDetail(self, account, platform):
+        data = router.get(url=url + 'Game/' + account + '/' + platform, auth=self.auth)
+        return data
         headers = {'Authorization': self.token}
-        try:
-            res = requests.get(url + 'Game/' + account + '/' + platform, headers=headers)
-            if res.status_code == 200:
-                data = json.loads(res.text)
-                if data['code'] == 1:
-                    return data['data']
-        except Exception:
-            pass
+        if data:
+            return True
+        else:
+            return False
 
     def gameLogin(self, account, platform):
         body = {'account': account, 'platform': platform}
-        try:
-            res = requests.get(url + 'Game/Login/', data=json.dumps(body))
-            if res.status_code == 200:
-                data = json.loads(res.text)
-                if data['code'] == 1:
-                    print()
-                    return True
-                else:
-                    return False
-        except Exception:
-            pass
+        data = router.get(url=url + 'Game/Login/', body=body)
 
