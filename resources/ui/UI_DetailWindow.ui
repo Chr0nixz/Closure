@@ -47,6 +47,11 @@
            <height>761</height>
           </rect>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <layout class="QGridLayout" name="gridLayout_2"/>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>
