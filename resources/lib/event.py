@@ -78,10 +78,12 @@ def gameCardFlex(width):
 
 
 def gameLogin(account, platform):
-    th = threads.gameLoginThread()
+    th = threads.gameLoginThread(account, platform)
     th.start()
     th.exec()
 
 
 def gameLoginResult(result):
-    pass
+    if result:
+        windows.gamewindow.statusbar.showMessage('提交登录请求成功！')
+        refreshGames()

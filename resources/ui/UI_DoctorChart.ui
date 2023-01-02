@@ -27,6 +27,22 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
+    <spacer name="verticalSpacer_8">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Maximum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>30</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="CharLayout"/>
    </item>
    <item>
@@ -54,30 +70,34 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="APLabel">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>20</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #ffd740</string>
-     </property>
-     <property name="text">
-      <string>理智</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="APLabel">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #ffd740</string>
+       </property>
+       <property name="text">
+        <string>理智</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <spacer name="verticalSpacer_4">
@@ -180,7 +200,7 @@
       </size>
      </property>
      <property name="value">
-      <number>24</number>
+      <number>50</number>
      </property>
     </widget>
    </item>

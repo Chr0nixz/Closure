@@ -14,11 +14,10 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         self.account = data['config']['account']
         self.platform = data['config']['platform']
         self.detailButton.setEnabled(False)
-        self.addGames(data)
-
-    def addGames(self, data):
+        self.serverTag = TagLabel.Tag(12)
+        self.horizontalLayout_5.addWidget(self.serverTag)
         self.addContent(data)
-        self.detailButton.clicked.connect(self.openDetail)
+
 
     def refresh(self, data):
         self.statusButton.hide()
@@ -61,14 +60,12 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         _translate = QtCore.QCoreApplication.translate
         if self.platform == 1:
             self.Account_label.setText(_translate("Form", '账号：' + self.account))
-            self.serverTag = TagLabel.Tag(12)
             self.serverTag.setText(' 官服')
-            self.horizontalLayout_5.addWidget(self.serverTag)
+            self.serverTag.setFixedSize(43, 24)
         else:
             self.Account_label.setText(_translate("Form", '账号：' + self.account))
-            self.serverTag = TagLabel.Tag(12)
             self.serverTag.setText(' B服')
-            self.horizontalLayout_5.addWidget(self.serverTag)
+            self.serverTag.setFixedSize(42, 24)
         if data['config']['isPause']:
             self.Status_label.setText(_translate("Form", '暂停中'))
             self.setLoginButton()
@@ -90,11 +87,13 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
             _translate("Form", data['game_config']['mapId']['code'] + ' ' + data['game_config']['mapId']['name']))
         self.AP_label.setText(_translate("Form", str(data['game_config']['keepingAP'])))
         self.setDetailButton()
+        self.detailButton.clicked.connect(self.openDetail)
 
     def setLoginButton(self):
         self.statusButton.setText(' 开 始')
         self.statusButton.setProperty('class', 'success')
         self.statusButton.setIcon(qta.icon('mdi.power', options=[{'scale_factor': 1.4, 'color': 'green'}]))
+        self.statusButton.clicked.connect(self.gameLogin)
 
     def setPauseButton(self):
         self.statusButton.setText(' 暂 停')
@@ -107,3 +106,7 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
     def openDetail(self):
         event.getDetail(self.account, self.platform)
 
+    def gameLogin(self):
+        self.statusButton.setText('登陆中')
+        self.statusButton.setEnabled(False)
+        event.gameLogin(self.account, self.platform)

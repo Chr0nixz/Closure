@@ -67,5 +67,10 @@ class MainController():
 
     def gameLogin(self, account, platform):
         body = {'account': account, 'platform': platform}
-        data = router.get(url=url + 'Game/Login/', body=body)
+        data = router.post(url=url + 'Game/Login/', auth=self.token, body=body)
+        if data:
+            if data['code'] == 1:
+                return True
+        else:
+            return False
 

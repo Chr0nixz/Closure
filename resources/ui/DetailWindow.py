@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import QMainWindow, QWidget
 
 from resources.ui import UI_DetailWindow, DoctorChart
 from resources.ui.CircleImage import CircleImage
-from resources.ui.ToggleSwitch import SliderButton
 
 
 class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
@@ -23,3 +22,6 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         self.doctorChart = DoctorChart.Widget(widget)
         self.doctorChart.addContent(data)
         self.doctorLayout.addWidget(widget, 1, 1)
+
+    def addWidgets(self):
+        pass

@@ -19,14 +19,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="Account">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>账号：</string>
          </property>
         </widget>
        </item>
@@ -35,22 +35,47 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="AP">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>理智保留：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="spinBox">
+        <widget class="QSlider" name="APSlider">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="maximumSize">
           <size>
            <width>60</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="APBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
            <height>16777215</height>
           </size>
          </property>
@@ -59,6 +84,9 @@
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="maximum">
+          <number>135</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -66,22 +94,47 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="Recruit">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>公招券保留：</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="spinBox_2">
+        <widget class="QSlider" name="RecruitSlider">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="maximumSize">
           <size>
            <width>60</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="RecuritBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
            <height>16777215</height>
           </size>
          </property>
@@ -97,14 +150,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="Arrange">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>基建排班：</string>
          </property>
         </widget>
        </item>
@@ -113,14 +166,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
-        <widget class="QLabel" name="label_5">
+        <widget class="QLabel" name="AutoBattle">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>托管战斗：</string>
          </property>
         </widget>
        </item>
@@ -129,14 +182,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="RecruitIgnore">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>招募支援机械：</string>
          </property>
         </widget>
        </item>
@@ -145,21 +198,23 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_8">
        <item>
-        <widget class="QLabel" name="label_7">
+        <widget class="QLabel" name="BattleMaps">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>战斗队列：</string>
          </property>
         </widget>
        </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_9">
        <item>
         <widget class="QLabel" name="label_8">
          <property name="font">
@@ -168,9 +223,63 @@
           </font>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>1-7</string>
          </property>
         </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>60</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>保 存</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>60</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>
