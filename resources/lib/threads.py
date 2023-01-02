@@ -5,7 +5,7 @@ from resources.lib import event
 
 
 class LoginThread(QThread):
-    loginsignal = pyqtSignal(bool)
+    loginsignal = pyqtSignal(int)
 
     def __init__(self, email, password):
         super().__init__()

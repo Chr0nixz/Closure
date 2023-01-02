@@ -35,6 +35,16 @@ def get(url, auth=None, body=None):
         return False
 
 
+def getJson(url):
+    try:
+        res = requests.get(url)
+        if res.status_code == 200:
+            data = json.loads(res.text)
+            return data
+    except Exception:
+        pass
+
+
 class CodeError(Exception):
     pass
 

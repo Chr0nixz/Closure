@@ -21,14 +21,25 @@ class MainController():
             stage = json.load(fp)
         return items, stage
 
-    def login(self, email, password) -> bool:
-        data = router.get(url=url + 'Auth/' + email + '/' + password)
-        if data:
-            self.token = data['token']
-            event.configAccount(email, password)
+    def getStatus(self) -> bool:
+        data = router.getJson('https://ak.dzp.me/ann.json')
+        if not data['isMaintain']:
+            self.announcement = data['announcement']
             return True
         else:
             return False
+
+    def login(self, email, password) -> int:
+        if self.getStatus():
+            data = router.get(url=url + 'Auth/' + email + '/' + password)
+            if data:
+                self.token = data['token']
+                event.configAccount(email, password)
+                return 1
+            else:
+                return 0
+        else:
+            return -1
 
     def getGames(self) -> list:
         data = router.get(url=url + 'Game/', auth=self.token)

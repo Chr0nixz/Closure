@@ -1,7 +1,7 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
 import qtawesome as qta
+from PyQt5 import QtCore, QtGui, QtWidgets
 
-from . import UI_GameCard
+from . import UI_GameCard, TagLabel
 from ..lib import event
 
 
@@ -13,7 +13,7 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         self.num = num
         self.account = data['config']['account']
         self.platform = data['config']['platform']
-        #self.detailButton.setEnabled(False)
+        self.detailButton.setEnabled(False)
         self.addGames(data)
 
     def addGames(self, data):
@@ -60,9 +60,15 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
     def addContent(self, data):
         _translate = QtCore.QCoreApplication.translate
         if self.platform == 1:
-            self.Account_label.setText(_translate("Form", '账号：' + self.account + '（官服）'))
+            self.Account_label.setText(_translate("Form", '账号：' + self.account))
+            self.serverTag = TagLabel.Tag(12)
+            self.serverTag.setText(' 官服')
+            self.horizontalLayout_5.addWidget(self.serverTag)
         else:
-            self.Account_label.setText(_translate("Form", '账号：' + self.account + '（B服）'))
+            self.Account_label.setText(_translate("Form", '账号：' + self.account))
+            self.serverTag = TagLabel.Tag(12)
+            self.serverTag.setText(' B服')
+            self.horizontalLayout_5.addWidget(self.serverTag)
         if data['config']['isPause']:
             self.Status_label.setText(_translate("Form", '暂停中'))
             self.setLoginButton()

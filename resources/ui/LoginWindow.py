@@ -19,8 +19,6 @@ class MainWindow(QMainWindow, UI_LoginWindow.Ui_LoginWindow):
         self.Label_closure.setProperty('class', 'closure_label')
         self.LoginButton.setIcon(qta.icon('mdi.login', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
         self.LoginButton.clicked.connect(self.login)
-        test = SliderButton()
-        self.horizontalLayout_4.addWidget(test)
         default = event.getDefaultAccount()
         if default:
             self.email_input.setText(default.get('email'))

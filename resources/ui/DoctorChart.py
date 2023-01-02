@@ -1,9 +1,8 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-import qtawesome as qta
 import time
 
+from PyQt5 import QtWidgets
+
 from . import UI_DoctorChart
-from ..lib import event
 
 
 class Widget(QtWidgets.QWidget, UI_DoctorChart.Ui_Form):

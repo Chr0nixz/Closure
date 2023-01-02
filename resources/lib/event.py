@@ -27,11 +27,14 @@ def login(email, password):
 
 
 def loginResult(result):
-    if result:
-        windows.loginwindow.statusbar.showMessage('登陆成功，正在跳转...')
-        getGames()
-    else:
-        windows.loginFailed()
+    match result:
+        case -1:
+            windows.serverMaintain()
+        case 0:
+            windows.loginFailed()
+        case 1:
+            windows.loginwindow.statusbar.showMessage('登陆成功，正在跳转...')
+            getGames()
 
 
 def getGames():
@@ -53,7 +56,7 @@ def getDefaultAccount():
 
 
 def getAnnouncement():
-    return eventhandler.getAnnouncement()
+    return eventhandler.announcement
 
 
 def refreshGames():

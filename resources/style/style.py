@@ -27,4 +27,10 @@ QPushButton:hover {
   color: #31363b;
   background-color: #dc3545;
 }
+
+.tag {
+  background-color: #ffc107;
+  border-radius: 10px;
+  color: #31363b;
+}
 '''
