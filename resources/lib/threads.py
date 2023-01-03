@@ -57,6 +57,8 @@ class getDetailThread(QThread):
 
     def run(self) -> None:
         data = event.eventhandler.getDetail(self.account, self.platform)
+        config = event.eventhandler.getConfig(self.account, self.platform)
         data['account'] = self.account
+        data['platform'] = self.platform
+        data['config'] = config
         self.detailsignal.emit(data)
-

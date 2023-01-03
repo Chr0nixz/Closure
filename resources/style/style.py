@@ -30,7 +30,7 @@ QPushButton:hover {
 
 .tag {
   background-color: #ffc107;
-  border-radius: 10px;
+  border-radius: 12px;
   color: #31363b;
 }
 '''

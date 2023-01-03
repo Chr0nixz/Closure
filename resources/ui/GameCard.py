@@ -58,12 +58,11 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
 
     def addContent(self, data):
         _translate = QtCore.QCoreApplication.translate
+        self.Account_label.setText(_translate("Form", '账号：' + self.account))
         if self.platform == 1:
-            self.Account_label.setText(_translate("Form", '账号：' + self.account))
             self.serverTag.setText(' 官服')
             self.serverTag.setFixedSize(43, 24)
         else:
-            self.Account_label.setText(_translate("Form", '账号：' + self.account))
             self.serverTag.setText(' B服')
             self.serverTag.setFixedSize(42, 24)
         if data['config']['isPause']:
@@ -77,12 +76,20 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
                 case 0:
                     self.setLoginButton()
                 case 1:
+                    self.setLoginButton()
                     self.statusButton.setEnabled(False)
                 case 2:
                     self.setPauseButton()
                     self.detailButton.setEnabled(True)
                 case 3:
                     self.setLoginButton()
+                case 4:
+                    self.setLoginButton()
+                case 5:
+                    self.setLoginButton()
+                case 999:
+                    self.setLoginButton()
+                    self.statusButton.setEnabled(False)
         self.Map_label.setText(
             _translate("Form", data['game_config']['mapId']['code'] + ' ' + data['game_config']['mapId']['name']))
         self.AP_label.setText(_translate("Form", str(data['game_config']['keepingAP'])))

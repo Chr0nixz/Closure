@@ -1,0 +1,1253 @@
+{
+    "char_285_medic2": {
+        "name": "Lancet-2"
+    },
+    "char_286_cast3": {
+        "name": "Castle-3"
+    },
+    "char_376_therex": {
+        "name": "THRM-EX"
+    },
+    "char_4000_jnight": {
+        "name": "正义骑士号"
+    },
+    "char_502_nblade": {
+        "name": "夜刀"
+    },
+    "char_500_noirc": {
+        "name": "黑角"
+    },
+    "char_503_rang": {
+        "name": "巡林者"
+    },
+    "char_501_durin": {
+        "name": "杜林"
+    },
+    "char_009_12fce": {
+        "name": "12F"
+    },
+    "char_123_fang": {
+        "name": "芬"
+    },
+    "char_240_wyvern": {
+        "name": "香草"
+    },
+    "char_504_rguard": {
+        "name": "预备干员-近战"
+    },
+    "char_192_falco": {
+        "name": "翎羽"
+    },
+    "char_208_melan": {
+        "name": "玫兰莎"
+    },
+    "char_281_popka": {
+        "name": "泡普卡"
+    },
+    "char_209_ardign": {
+        "name": "卡缇"
+    },
+    "char_122_beagle": {
+        "name": "米格鲁"
+    },
+    "char_514_rdfend": {
+        "name": "预备干员-重装"
+    },
+    "char_284_spot": {
+        "name": "斑点"
+    },
+    "char_124_kroos": {
+        "name": "克洛丝"
+    },
+    "char_211_adnach": {
+        "name": "安德切尔"
+    },
+    "char_507_rsnipe": {
+        "name": "预备干员-狙击"
+    },
+    "char_121_lava": {
+        "name": "炎熔"
+    },
+    "char_120_hibisc": {
+        "name": "芙蓉"
+    },
+    "char_212_ansel": {
+        "name": "安赛尔"
+    },
+    "char_506_rmedic": {
+        "name": "预备干员-后勤"
+    },
+    "char_210_stward": {
+        "name": "史都华德"
+    },
+    "char_505_rcast": {
+        "name": "预备干员-术师"
+    },
+    "char_278_orchid": {
+        "name": "梓兰"
+    },
+    "char_141_nights": {
+        "name": "夜烟"
+    },
+    "char_109_fmout": {
+        "name": "远山"
+    },
+    "char_253_greyy": {
+        "name": "格雷伊"
+    },
+    "char_328_cammou": {
+        "name": "卡达"
+    },
+    "char_469_indigo": {
+        "name": "深靛"
+    },
+    "char_4004_pudd": {
+        "name": "布丁"
+    },
+    "char_235_jesica": {
+        "name": "杰西卡"
+    },
+    "char_126_shotst": {
+        "name": "流星"
+    },
+    "char_190_clour": {
+        "name": "红云"
+    },
+    "char_133_mm": {
+        "name": "梅"
+    },
+    "char_118_yuki": {
+        "name": "白雪"
+    },
+    "char_440_pinecn": {
+        "name": "松果"
+    },
+    "char_302_glaze": {
+        "name": "安比尔"
+    },
+    "char_366_acdrop": {
+        "name": "酸糖"
+    },
+    "char_4062_totter": {
+        "name": "铅踝"
+    },
+    "char_198_blackd": {
+        "name": "讯使"
+    },
+    "char_149_scave": {
+        "name": "清道夫"
+    },
+    "char_290_vigna": {
+        "name": "红豆"
+    },
+    "char_151_myrtle": {
+        "name": "桃金娘"
+    },
+    "char_452_bstalk": {
+        "name": "豆苗"
+    },
+    "char_130_doberm": {
+        "name": "杜宾"
+    },
+    "char_289_gyuki": {
+        "name": "缠丸"
+    },
+    "char_159_peacok": {
+        "name": "断罪者"
+    },
+    "char_193_frostl": {
+        "name": "霜叶"
+    },
+    "char_127_estell": {
+        "name": "艾丝黛尔"
+    },
+    "char_185_frncat": {
+        "name": "慕斯"
+    },
+    "char_301_cutter": {
+        "name": "刻刀"
+    },
+    "char_337_utage": {
+        "name": "宴"
+    },
+    "char_271_spikes": {
+        "name": "芳汀"
+    },
+    "char_4067_lolxh": {
+        "name": "罗小黑"
+    },
+    "char_4063_quartz": {
+        "name": "石英"
+    },
+    "char_237_gravel": {
+        "name": "砾"
+    },
+    "char_272_strong": {
+        "name": "孑"
+    },
+    "char_236_rope": {
+        "name": "暗索"
+    },
+    "char_117_myrrh": {
+        "name": "末药"
+    },
+    "char_187_ccheal": {
+        "name": "嘉维尔"
+    },
+    "char_298_susuro": {
+        "name": "苏苏洛"
+    },
+    "char_181_flower": {
+        "name": "调香师"
+    },
+    "char_385_finlpp": {
+        "name": "清流"
+    },
+    "char_4041_chnut": {
+        "name": "褐果"
+    },
+    "char_199_yak": {
+        "name": "角峰"
+    },
+    "char_150_snakek": {
+        "name": "蛇屠箱"
+    },
+    "char_381_bubble": {
+        "name": "泡泡"
+    },
+    "char_196_sunbr": {
+        "name": "古米"
+    },
+    "char_260_durnar": {
+        "name": "坚雷"
+    },
+    "char_110_deepcl": {
+        "name": "深海色"
+    },
+    "char_183_skgoat": {
+        "name": "地灵"
+    },
+    "char_258_podego": {
+        "name": "波登可"
+    },
+    "char_484_robrta": {
+        "name": "罗比菈塔"
+    },
+    "char_355_ethan": {
+        "name": "伊桑"
+    },
+    "char_277_sqrrel": {
+        "name": "阿消"
+    },
+    "char_128_plosis": {
+        "name": "白面鸮"
+    },
+    "char_275_breeze": {
+        "name": "微风"
+    },
+    "char_115_headbr": {
+        "name": "凛冬"
+    },
+    "char_102_texas": {
+        "name": "德克萨斯"
+    },
+    "char_349_chiave": {
+        "name": "贾维"
+    },
+    "char_513_apionr": {
+        "name": "郁金香"
+    },
+    "char_261_sddrag": {
+        "name": "苇草"
+    },
+    "char_496_wildmn": {
+        "name": "野鬃"
+    },
+    "char_401_elysm": {
+        "name": "极境"
+    },
+    "char_476_blkngt": {
+        "name": "夜半"
+    },
+    "char_497_ctable": {
+        "name": "晓歌"
+    },
+    "char_4017_puzzle": {
+        "name": "谜图"
+    },
+    "char_308_swire": {
+        "name": "诗怀雅"
+    },
+    "char_265_sophia": {
+        "name": "鞭刃"
+    },
+    "char_106_franka": {
+        "name": "芙兰卡"
+    },
+    "char_131_flameb": {
+        "name": "炎客"
+    },
+    "char_508_aguard": {
+        "name": "Sharp"
+    },
+    "char_155_tiger": {
+        "name": "因陀罗"
+    },
+    "char_415_flint": {
+        "name": "燧石"
+    },
+    "char_157_dagda": {
+        "name": "达格达"
+    },
+    "char_140_whitew": {
+        "name": "拉普兰德"
+    },
+    "char_294_ayer": {
+        "name": "断崖"
+    },
+    "char_252_bibeak": {
+        "name": "柏喙"
+    },
+    "char_459_tachak": {
+        "name": "战车"
+    },
+    "char_143_ghost": {
+        "name": "幽灵鲨"
+    },
+    "char_356_broca": {
+        "name": "布洛卡"
+    },
+    "char_274_astesi": {
+        "name": "星极"
+    },
+    "char_333_sidero": {
+        "name": "铸铁"
+    },
+    "char_475_akafyu": {
+        "name": "赤冬"
+    },
+    "char_421_crow": {
+        "name": "羽毛笔"
+    },
+    "char_4066_highmo": {
+        "name": "海沫"
+    },
+    "char_486_takila": {
+        "name": "龙舌兰"
+    },
+    "char_129_bluep": {
+        "name": "蓝毒"
+    },
+    "char_204_platnm": {
+        "name": "白金"
+    },
+    "char_367_swllow": {
+        "name": "灰喉"
+    },
+    "char_511_asnipe": {
+        "name": "Stormeye"
+    },
+    "char_365_aprl": {
+        "name": "四月"
+    },
+    "char_1021_kroos2": {
+        "name": "寒芒克洛丝"
+    },
+    "char_219_meteo": {
+        "name": "陨星"
+    },
+    "char_379_sesa": {
+        "name": "慑砂"
+    },
+    "char_279_excu": {
+        "name": "送葬人"
+    },
+    "char_346_aosta": {
+        "name": "奥斯塔"
+    },
+    "char_002_amiya": {
+        "name": "阿米娅"
+    },
+    "char_405_absin": {
+        "name": "苦艾"
+    },
+    "char_411_tomimi": {
+        "name": "特米米"
+    },
+    "char_466_qanik": {
+        "name": "雪绒"
+    },
+    "char_166_skfire": {
+        "name": "天火"
+    },
+    "char_509_acast": {
+        "name": "Pith"
+    },
+    "char_306_leizi": {
+        "name": "惊蛰"
+    },
+    "char_135_halo": {
+        "name": "星源"
+    },
+    "char_344_beewax": {
+        "name": "蜜蜡"
+    },
+    "char_373_lionhd": {
+        "name": "莱恩哈特"
+    },
+    "char_388_mint": {
+        "name": "薄绿"
+    },
+    "char_338_iris": {
+        "name": "爱丽丝"
+    },
+    "char_297_hamoni": {
+        "name": "和弦"
+    },
+    "char_1011_lava2": {
+        "name": "炎狱炎熔"
+    },
+    "char_489_serum": {
+        "name": "蚀清"
+    },
+    "char_4013_kjera": {
+        "name": "耶拉"
+    },
+    "char_4040_rockr": {
+        "name": "洛洛"
+    },
+    "char_4054_malist": {
+        "name": "至简"
+    },
+    "char_242_otter": {
+        "name": "梅尔"
+    },
+    "char_336_folivo": {
+        "name": "稀音"
+    },
+    "char_108_silent": {
+        "name": "赫默"
+    },
+    "char_171_bldsk": {
+        "name": "华法琳"
+    },
+    "char_345_folnic": {
+        "name": "亚叶"
+    },
+    "char_510_amedic": {
+        "name": "Touch"
+    },
+    "char_348_ceylon": {
+        "name": "锡兰"
+    },
+    "char_436_whispr": {
+        "name": "絮雨"
+    },
+    "char_402_tuye": {
+        "name": "图耶"
+    },
+    "char_473_mberry": {
+        "name": "桑葚"
+    },
+    "char_449_glider": {
+        "name": "蜜莓"
+    },
+    "char_1024_hbisc2": {
+        "name": "濯尘芙蓉"
+    },
+    "char_4071_peper": {
+        "name": "明椒"
+    },
+    "char_148_nearl": {
+        "name": "临光"
+    },
+    "char_226_hmau": {
+        "name": "吽"
+    },
+    "char_144_red": {
+        "name": "红"
+    },
+    "char_243_waaifu": {
+        "name": "槐琥"
+    },
+    "char_214_kafka": {
+        "name": "卡夫卡"
+    },
+    "char_455_nothin": {
+        "name": "乌有"
+    },
+    "char_107_liskam": {
+        "name": "雷蛇"
+    },
+    "char_201_moeshd": {
+        "name": "可颂"
+    },
+    "char_325_bison": {
+        "name": "拜松"
+    },
+    "char_163_hpsts": {
+        "name": "火神"
+    },
+    "char_378_asbest": {
+        "name": "石棉"
+    },
+    "char_512_aprot": {
+        "name": "暮落"
+    },
+    "char_4025_aprot2": {
+        "name": "暮落"
+    },
+    "char_4047_pianst": {
+        "name": "车尔尼"
+    },
+    "char_457_blitz": {
+        "name": "闪击"
+    },
+    "char_304_zebra": {
+        "name": "暴雨"
+    },
+    "char_431_ashlok": {
+        "name": "灰毫"
+    },
+    "char_422_aurora": {
+        "name": "极光"
+    },
+    "char_145_prove": {
+        "name": "普罗旺斯"
+    },
+    "char_158_milu": {
+        "name": "守林人"
+    },
+    "char_218_cuttle": {
+        "name": "安哲拉"
+    },
+    "char_4014_lunacu": {
+        "name": "子月"
+    },
+    "char_363_toddi": {
+        "name": "熔泉"
+    },
+    "char_4043_erato": {
+        "name": "埃拉托"
+    },
+    "char_1027_greyy2": {
+        "name": "承曦格雷伊"
+    },
+    "char_173_slchan": {
+        "name": "崖心"
+    },
+    "char_383_snsant": {
+        "name": "雪雉"
+    },
+    "char_174_slbell": {
+        "name": "初雪"
+    },
+    "char_254_vodfox": {
+        "name": "巫恋"
+    },
+    "char_195_glassb": {
+        "name": "真理"
+    },
+    "char_326_glacus": {
+        "name": "格劳克斯"
+    },
+    "char_4032_provs": {
+        "name": "但书"
+    },
+    "char_433_windft": {
+        "name": "掠风"
+    },
+    "char_101_sora": {
+        "name": "空"
+    },
+    "char_4045_heidi": {
+        "name": "海蒂"
+    },
+    "char_343_tknogi": {
+        "name": "月禾"
+    },
+    "char_4019_ncdeer": {
+        "name": "九色鹿"
+    },
+    "char_492_quercu": {
+        "name": "夏栎"
+    },
+    "char_215_mantic": {
+        "name": "狮蝎"
+    },
+    "char_478_kirara": {
+        "name": "绮良"
+    },
+    "char_241_panda": {
+        "name": "食铁兽"
+    },
+    "char_4036_forcer": {
+        "name": "见行者"
+    },
+    "char_451_robin": {
+        "name": "罗宾"
+    },
+    "char_458_rfrost": {
+        "name": "霜华"
+    },
+    "char_369_bena": {
+        "name": "贝娜"
+    },
+    "char_4016_kazema": {
+        "name": "风丸"
+    },
+    "char_103_angel": {
+        "name": "能天使"
+    },
+    "char_332_archet": {
+        "name": "空弦"
+    },
+    "char_456_ash": {
+        "name": "灰烬"
+    },
+    "char_340_shwaz": {
+        "name": "黑"
+    },
+    "char_4055_bgsnow": {
+        "name": "鸿雪"
+    },
+    "char_430_fartth": {
+        "name": "远牙"
+    },
+    "char_113_cqbw": {
+        "name": "W"
+    },
+    "char_300_phenxi": {
+        "name": "菲亚梅塔"
+    },
+    "char_197_poca": {
+        "name": "早露"
+    },
+    "char_391_rosmon": {
+        "name": "迷迭香"
+    },
+    "char_1013_chen2": {
+        "name": "假日威龙陈"
+    },
+    "char_112_siege": {
+        "name": "推进之王"
+    },
+    "char_222_bpipe": {
+        "name": "风笛"
+    },
+    "char_362_saga": {
+        "name": "嵯峨"
+    },
+    "char_479_sleach": {
+        "name": "琴柳"
+    },
+    "char_420_flamtl": {
+        "name": "焰尾"
+    },
+    "char_427_vigil": {
+        "name": "伺夜"
+    },
+    "char_134_ifrit": {
+        "name": "伊芙利特"
+    },
+    "char_213_mostma": {
+        "name": "莫斯提马"
+    },
+    "char_180_amgoat": {
+        "name": "艾雅法拉"
+    },
+    "char_2013_cerber": {
+        "name": "刻俄柏"
+    },
+    "char_2015_dusk": {
+        "name": "夕"
+    },
+    "char_472_pasngr": {
+        "name": "异客"
+    },
+    "char_426_billro": {
+        "name": "卡涅利安"
+    },
+    "char_377_gdglow": {
+        "name": "澄闪"
+    },
+    "char_4046_ebnhlz": {
+        "name": "黑键"
+    },
+    "char_206_gnosis": {
+        "name": "灵知"
+    },
+    "char_291_aglina": {
+        "name": "安洁莉娜"
+    },
+    "char_358_lisa": {
+        "name": "铃兰"
+    },
+    "char_248_mgllan": {
+        "name": "麦哲伦"
+    },
+    "char_1012_skadi2": {
+        "name": "浊心斯卡蒂"
+    },
+    "char_2023_ling": {
+        "name": "令"
+    },
+    "char_4072_ironmn": {
+        "name": "白铁"
+    },
+    "char_250_phatom": {
+        "name": "傀影"
+    },
+    "char_1028_texas2": {
+        "name": "缄默德克萨斯"
+    },
+    "char_322_lmlee": {
+        "name": "老鲤"
+    },
+    "char_400_weedy": {
+        "name": "温蒂"
+    },
+    "char_225_haak": {
+        "name": "阿"
+    },
+    "char_474_glady": {
+        "name": "歌蕾蒂娅"
+    },
+    "char_437_mizuki": {
+        "name": "水月"
+    },
+    "char_1023_ghost2": {
+        "name": "归溟幽灵鲨"
+    },
+    "char_4048_doroth": {
+        "name": "多萝西"
+    },
+    "char_147_shining": {
+        "name": "闪灵"
+    },
+    "char_179_cgbird": {
+        "name": "夜莺"
+    },
+    "char_003_kalts": {
+        "name": "凯尔希"
+    },
+    "char_4042_lumen": {
+        "name": "流明"
+    },
+    "char_1020_reed2": {
+        "name": "焰影苇草"
+    },
+    "char_136_hsguma": {
+        "name": "星熊"
+    },
+    "char_202_demkni": {
+        "name": "塞雷娅"
+    },
+    "char_423_blemsh": {
+        "name": "瑕光"
+    },
+    "char_2014_nian": {
+        "name": "年"
+    },
+    "char_311_mudrok": {
+        "name": "泥岩"
+    },
+    "char_4065_judge": {
+        "name": "斥罪"
+    },
+    "char_416_zumama": {
+        "name": "森蚺"
+    },
+    "char_4039_horn": {
+        "name": "号角"
+    },
+    "char_264_f12yin": {
+        "name": "山"
+    },
+    "char_172_svrash": {
+        "name": "银灰"
+    },
+    "char_293_thorns": {
+        "name": "棘刺"
+    },
+    "char_010_chen": {
+        "name": "陈"
+    },
+    "char_4009_irene": {
+        "name": "艾丽妮"
+    },
+    "char_017_huang": {
+        "name": "煌"
+    },
+    "char_1026_gvial2": {
+        "name": "百炼嘉维尔"
+    },
+    "char_350_surtr": {
+        "name": "史尔特尔"
+    },
+    "char_188_helage": {
+        "name": "赫拉格"
+    },
+    "char_485_pallas": {
+        "name": "帕拉斯"
+    },
+    "char_1014_nearl2": {
+        "name": "耀骑士临光"
+    },
+    "char_4064_mlynar": {
+        "name": "玛恩纳"
+    },
+    "token_10000_silent_healrb": {
+        "name": "医疗探机"
+    },
+    "token_10001_deepcl_tentac": {
+        "name": "触手"
+    },
+    "token_10002_kalts_mon3tr": {
+        "name": "Mon3tr"
+    },
+    "token_10003_cgbird_bird": {
+        "name": "幻影"
+    },
+    "token_10004_otter_motter": {
+        "name": "机械水獭"
+    },
+    "token_10005_mgllan_drone1": {
+        "name": "龙腾.F"
+    },
+    "token_10005_mgllan_drone2": {
+        "name": "龙腾.L"
+    },
+    "token_10005_mgllan_drone3": {
+        "name": "龙腾.A"
+    },
+    "token_10006_vodfox_doll": {
+        "name": "诅咒娃娃"
+    },
+    "token_10007_phatom_twin": {
+        "name": "镜中虚影"
+    },
+    "token_10008_cqbw_box": {
+        "name": "此面向敌"
+    },
+    "token_10009_weedy_cannon": {
+        "name": "工程蓄水炮"
+    },
+    "token_10010_folivo_car": {
+        "name": "移动摄影器"
+    },
+    "token_10011_beewax_oblisk": {
+        "name": "沙之碑"
+    },
+    "token_10012_rosmon_shield": {
+        "name": "迷迭香的战术装备"
+    },
+    "token_10013_robin_mine": {
+        "name": "\"夹子\""
+    },
+    "token_10014_bstalk_crab": {
+        "name": "磐蟹护卫队"
+    },
+    "token_10015_dusk_drgn": {
+        "name": "\"小自在\""
+    },
+    "token_10016_rfrost_mine": {
+        "name": "迎宾踏垫"
+    },
+    "token_10017_skadi2_dedant": {
+        "name": "斯卡蒂的海嗣"
+    },
+    "token_10018_robrta_mach": {
+        "name": "全自动造型仪"
+    },
+    "token_10019_nearl2_sword": {
+        "name": "“耀阳”"
+    },
+    "token_10020_ling_soul1": {
+        "name": "“清平”"
+    },
+    "token_10020_ling_soul2": {
+        "name": "“逍遥”"
+    },
+    "token_10020_ling_soul3": {
+        "name": "“弦惊”"
+    },
+    "token_10021_blkngt_hypnos": {
+        "name": "眠兽"
+    },
+    "token_10022_kazema_shadow": {
+        "name": "纸偶"
+    },
+    "token_10023_windft_wrench": {
+        "name": "可靠电池"
+    },
+    "token_10024_ebnhlz_rcube": {
+        "name": "旧日残影"
+    },
+    "token_10025_doroth_recttp": {
+        "name": "共振装置"
+    },
+    "token_10026_bgsnow_subbow": {
+        "name": "“打字机”"
+    },
+    "token_10027_ironmn_pile1": {
+        "name": "白铁™多功能平台"
+    },
+    "token_10027_ironmn_pile2": {
+        "name": "白铁™多功能平台"
+    },
+    "token_10027_ironmn_pile3": {
+        "name": "铁钳号·原型机"
+    },
+    "token_10028_vigil_wolf": {
+        "name": "狼群"
+    },
+    "trap_001_crate": {
+        "name": "障碍物"
+    },
+    "trap_002_emp": {
+        "name": "震撼装置"
+    },
+    "trap_003_gate": {
+        "name": "闸门"
+    },
+    "trap_005_sensor": {
+        "name": "侦测器"
+    },
+    "trap_006_antidr": {
+        "name": "干扰装置"
+    },
+    "trap_007_ballis": {
+        "name": "弩炮"
+    },
+    "trap_008_farm": {
+        "name": "指挥终端"
+    },
+    "trap_009_battery": {
+        "name": "便携式补给站"
+    },
+    "trap_010_frosts": {
+        "name": "源石冰晶"
+    },
+    "trap_011_ore": {
+        "name": "源石祭坛"
+    },
+    "trap_012_mine": {
+        "name": "干扰地雷"
+    },
+    "trap_013_blower": {
+        "name": "源石流发生装置"
+    },
+    "trap_014_tower": {
+        "name": "L-44\"留声机\""
+    },
+    "trap_015_tree": {
+        "name": "巨蕈"
+    },
+    "trap_016_peon": {
+        "name": "罗德岛临时雇员"
+    },
+    "trap_018_bomb": {
+        "name": "轰隆隆先生"
+    },
+    "trap_019_electric": {
+        "name": "梅什科线圈"
+    },
+    "trap_020_roadblock": {
+        "name": "道路障碍物"
+    },
+    "trap_021_flame": {
+        "name": "能量聚合体"
+    },
+    "trap_022_frosts_friend": {
+        "name": "霜星的源石冰晶"
+    },
+    "trap_023_ore_friend": {
+        "name": "爱国者的源石祭坛"
+    },
+    "trap_024_npcsld": {
+        "name": "盾卫"
+    },
+    "trap_025_prison": {
+        "name": "禁锢装置"
+    },
+    "trap_026_inverter": {
+        "name": "改良型二踢脚"
+    },
+    "trap_027_stone": {
+        "name": "碎石"
+    },
+    "trap_028_cannon": {
+        "name": "脉冲防御模组"
+    },
+    "trap_029_poison": {
+        "name": "催泪瓦斯控制阀"
+    },
+    "trap_030_factory": {
+        "name": "无人机工厂"
+    },
+    "trap_031_sleep": {
+        "name": "雪雉的安全起重机"
+    },
+    "trap_032_mound": {
+        "name": "土石结构"
+    },
+    "trap_033_sbomb": {
+        "name": "高能源石炸弹"
+    },
+    "trap_034_machst": {
+        "name": "加固装置"
+    },
+    "trap_035_emperor": {
+        "name": "大帝"
+    },
+    "trap_036_storm": {
+        "name": "沙尘暴"
+    },
+    "trap_037_airsup": {
+        "name": "可移动战术机库"
+    },
+    "trap_038_dsbell": {
+        "name": "应急救治设施"
+    },
+    "trap_039_dstnta": {
+        "name": "子代"
+    },
+    "trap_040_canoe": {
+        "name": "特制水上平台"
+    },
+    "trap_041_fcanon": {
+        "name": "风筝"
+    },
+    "trap_042_tidectrl": {
+        "name": "涨潮控制"
+    },
+    "trap_043_dupilr": {
+        "name": "破碎支柱"
+    },
+    "trap_044_duruin": {
+        "name": "战场废墟"
+    },
+    "trap_045_dublst": {
+        "name": "爆破装置"
+    },
+    "trap_046_oxygen": {
+        "name": "防水蚀镀膜装置"
+    },
+    "trap_048_neonlamp": {
+        "name": "城市霓虹"
+    },
+    "trap_049_candle": {
+        "name": "骑士之徽"
+    },
+    "trap_050_blizzard": {
+        "name": "暴风雪"
+    },
+    "trap_051_vultres": {
+        "name": "无主的财富"
+    },
+    "trap_052_slowfd": {
+        "name": "失修舞台雾机"
+    },
+    "trap_053_airbomb": {
+        "name": "便携气罐"
+    },
+    "trap_054_dancdol": {
+        "name": "“报幕助手”"
+    },
+    "trap_055_tileblock": {
+        "name": "封印的地面"
+    },
+    "trap_056_sfsuifire": {
+        "name": "丹田"
+    },
+    "trap_057_wpnsts": {
+        "name": "“冰淇淋机”"
+    },
+    "trap_058_gunctrl": {
+        "name": "伦蒂尼姆城防副炮"
+    },
+    "trap_059_peacokfool": {
+        "name": "断罪者"
+    },
+    "trap_060_bouncy": {
+        "name": "圣徒之手"
+    },
+    "trap_061_creep": {
+        "name": "溟痕"
+    },
+    "trap_062_magicstart": {
+        "name": "“低音号”"
+    },
+    "trap_063_magicturn": {
+        "name": "L-7 “回音壁”"
+    },
+    "trap_064_magiccircle": {
+        "name": "“谐振器”"
+    },
+    "trap_069_buffcard": {
+        "name": "战备激活阀"
+    },
+    "trap_070_supplycard": {
+        "name": "预备区发讯器"
+    },
+    "trap_071_recyclecard": {
+        "name": "紧急召回情报箱"
+    },
+    "trap_072_revivecard": {
+        "name": "休整区发讯器"
+    },
+    "trap_073_btauntcard": {
+        "name": "污染晶石"
+    },
+    "trap_074_bbombcard": {
+        "name": "聚热晶簇"
+    },
+    "trap_082_salecard": {
+        "name": "改派发讯器"
+    },
+    "trap_075_bgarmn": {
+        "name": "R-31重型动力装甲"
+    },
+    "trap_076_bgarms": {
+        "name": "R-31a重型动力装甲"
+    },
+    "trap_077_rmtarmn": {
+        "name": "R-11突击动力装甲"
+    },
+    "trap_078_rmtarms": {
+        "name": "R-11a突击动力装甲"
+    },
+    "trap_080_garage": {
+        "name": "自走车出发点"
+    },
+    "trap_081_turngear": {
+        "name": "自走车单行道"
+    },
+    "trap_085_paras": {
+        "name": "荧光孢子"
+    },
+    "trap_090_recodr": {
+        "name": "实体程式"
+    },
+    "trap_091_brctrl": {
+        "name": "实体程式控制"
+    },
+    "char_230_savage": {
+        "name": "暴行"
+    },
+    "char_282_catap": {
+        "name": "空爆"
+    },
+    "char_283_midn": {
+        "name": "月见夜"
+    },
+    "char_137_brownb": {
+        "name": "猎蜂"
+    },
+    "char_347_jaksel": {
+        "name": "杰克"
+    },
+    "char_164_nightm": {
+        "name": "夜魔"
+    },
+    "char_220_grani": {
+        "name": "格拉尼"
+    },
+    "char_263_skadi": {
+        "name": "斯卡蒂"
+    },
+    "trap_065_normbox": {
+        "name": "宝箱"
+    },
+    "trap_066_rarebox": {
+        "name": "尖刺宝箱"
+    },
+    "trap_068_badbox": {
+        "name": "箱形恐鱼"
+    },
+    "trap_083_bunker": {
+        "name": "掩体"
+    },
+    "trap_084_aidkit": {
+        "name": "急救包"
+    },
+    "trap_079_allydonq": {
+        "name": "猎潮的骑士"
+    },
+    "trap_067_dice": {
+        "name": "骰子"
+    },
+    "trap_088_dice2": {
+        "name": "8面骰子"
+    },
+    "trap_089_dice3": {
+        "name": "12面骰子"
+    },
+    "trap_093_tbattbc": {
+        "name": "钳兽壳粉"
+    },
+    "trap_094_tbpsnc": {
+        "name": "高效泡打粉"
+    },
+    "trap_095_tbsmmc": {
+        "name": "芳香精油"
+    },
+    "trap_086_larva": {
+        "name": "“汲营枯枝” "
+    },
+    "trap_087_allady": {
+        "name": "阿勒黛的卫护"
+    },
+    "trap_092_vgctrl": {
+        "name": "复仇黑手"
+    },
+    "trap_098_mire": {
+        "name": "沼泽控制"
+    },
+    "trap_104_dplant": {
+        "name": "改性植物激素"
+    },
+    "trap_700_cdabyss": {
+        "name": "阿戈尔示波器"
+    },
+    "trap_701_cdabyssa": {
+        "name": "阿戈尔示波器"
+    },
+    "trap_702_cdabyssb": {
+        "name": "阿戈尔示波器"
+    },
+    "trap_703_cdcredit": {
+        "name": "自适应补给元件"
+    },
+    "trap_704_cdcredita": {
+        "name": "自适应补给元件"
+    },
+    "trap_705_cdcreditb": {
+        "name": "自适应补给元件"
+    },
+    "trap_706_cdshield": {
+        "name": "镀膜装置导能阀"
+    },
+    "trap_707_cdshielda": {
+        "name": "重整导能组件"
+    },
+    "trap_708_cdshieldb": {
+        "name": "镀膜装置导能阀"
+    },
+    "trap_709_cdbeacon": {
+        "name": "丛林用示踪信标"
+    },
+    "trap_710_cdbeacona": {
+        "name": "阻断波长"
+    },
+    "trap_711_cdbeaconb": {
+        "name": "干扰波长"
+    },
+    "trap_712_cdhvrk": {
+        "name": "超重绝缘水泥"
+    },
+    "trap_713_cdflsb": {
+        "name": "劣质闪光弹"
+    }
+}

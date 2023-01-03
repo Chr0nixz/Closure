@@ -1,8 +1,3 @@
-import json
-import os
-
-import requests
-
 from . import event, router
 
 url = "https://api.arknights.host/"
@@ -12,14 +7,6 @@ respath = './resources/json/'
 class MainController():
     def __init__(self):
         self.token = None
-        self.items, self.stage = self.readJsons(respath)
-
-    def readJsons(self, path) -> (dict, dict):
-        with open(respath + 'Items.json', 'r', encoding='utf-8') as fp:
-            items = json.load(fp)
-        with open(respath + 'Stage.json', 'r', encoding='utf-8') as fp:
-            stage = json.load(fp)
-        return items, stage
 
     def getStatus(self) -> bool:
         data = router.getJson('https://ak.dzp.me/ann.json')
@@ -45,18 +32,6 @@ class MainController():
         data = router.get(url=url + 'Game/', auth=self.token)
         return data
 
-    def getMapCode(self, id):
-        if id == '':
-            return ''
-        else:
-            return self.stage[id]['code']
-
-    def getMapName(self, id):
-        if id == '':
-            return ''
-        else:
-            return self.stage[id]['name']
-
     def getAnnouncement(self):
         data = router.get(url=url + 'System/Announcement', auth=self.token)
         return data
@@ -74,3 +49,6 @@ class MainController():
         else:
             return False
 
+    def getConfig(self, account, platform):
+        data = router.get(url=url + 'Game/Config/' + account + '/' + str(platform), auth=self.token)
+        return data

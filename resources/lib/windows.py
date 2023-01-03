@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMessageBox
 
-from resources.lib import event
+from resources.lib import event, gamedata
 from resources.ui import LoginWindow, GameWindow, DetailWindow
 
 
@@ -11,6 +11,7 @@ class WindowController():
         self.loginwindow.show()
         self.gamewindow = GameWindow.MainWindow()
         self.detailwindows = {}
+        self.accountconfigs = {}
 
     def loginOK(self, accounts):
         self.addGames(accounts)
@@ -29,8 +30,8 @@ class WindowController():
         if accounts:
             num = 0
             for i in accounts:
-                i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
-                                             'name': self.controller.getMapName(i['game_config']['mapId'])}
+                i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
+                                             'name': gamedata.getMapName(i['game_config']['mapId'])}
                 self.gamewindow.addFrame()
                 self.gamewindow.addCard(i, num)
                 num += 1
@@ -42,14 +43,14 @@ class WindowController():
     def refreshGames(self, accounts):
         num = 0
         for i in accounts:
-            i['game_config']['mapId'] = {'code': self.controller.getMapCode(i['game_config']['mapId']),
-                                         'name': self.controller.getMapName(i['game_config']['mapId'])}
+            i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
+                                         'name': gamedata.getMapName(i['game_config']['mapId'])}
         for i in self.gamewindow.gamecards:
             i.refresh(accounts[num])
             num += 1
 
     def openDetail(self, data):
-        detail = DetailWindow.MainWindow(data['status'])
+        detail = DetailWindow.MainWindow(data)
         detail.show()
         self.detailwindows[data['account']] = detail
 

@@ -6,25 +6,29 @@ from . import UI_DoctorChart, TagLabel
 
 
 class Widget(QtWidgets.QWidget, UI_DoctorChart.Ui_Form):
-    def __init__(self, parent):
+    def __init__(self, parent, data):
         super().__init__(parent)
         self.setupUi(parent)
+        self.account = data['account']
+        self.platform = data['platform']
+        self.data = data['status']
+        self.addContent()
 
-    def addContent(self, data):
-        self.NickName.setText('Dr.' + data['nickName'])
+    def addContent(self):
+        self.NickName.setText('Dr.' + self.data['nickName'])
         self.levelTag = TagLabel.Tag(12)
-        self.levelTag.setText(' Lv.' + str(data['level']))
+        self.levelTag.setText(' Lv.' + str(self.data['level']))
         self.levelTag.setFixedSize(53, 24)
         self.horizontalLayout_3.addWidget(self.levelTag)
         now = time.time()
-        lastAPtime = data['lastApAddTime']
-        maxAP = data['maxAp']
+        lastAPtime = self.data['lastApAddTime']
+        maxAP = self.data['maxAp']
         AP = int((now - lastAPtime) / 360)
-        if data['ap'] + AP > maxAP:
+        if self.data['ap'] + AP > maxAP:
             currentAP = maxAP
         else:
-            currentAP = data['ap'] + AP
-        APtime = (maxAP - data['ap']) * 360 + lastAPtime
+            currentAP = self.data['ap'] + AP
+        APtime = (maxAP - self.data['ap']) * 360 + lastAPtime
         APtimeStr = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(APtime))
         value = int(currentAP / maxAP * 100)
         self.CurrentAP.setText(str(currentAP))

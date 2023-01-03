@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt, QRectF, QRect, QTimer, pyqtSignal
+from PyQt5.QtCore import Qt, QRectF, QRect, QTimer, pyqtSignal, QSize
 from PyQt5.QtGui import QColor, QPainter, QPainterPath, QFont
 from PyQt5.QtWidgets import QWidget
 
@@ -7,12 +7,13 @@ class SliderButton(QWidget):
     # 信号
     checkedChanged = pyqtSignal(bool)
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, checked=False, text=False, size=(40, 20)):
         super(QWidget, self).__init__(parent)
 
-        self.checked = False
+        self.size = QSize(size[0], size[1])
+        self.checked = checked
         self.bgColorOff = QColor(255, 255, 255)
-        self.bgColorOn = QColor(100, 184, 255)
+        self.bgColorOn = QColor(255, 193, 7)
 
         self.sliderColorOff = QColor(100, 100, 100)
         self.sliderColorOn = QColor(255, 255, 255)
@@ -20,24 +21,27 @@ class SliderButton(QWidget):
         self.textColorOff = QColor(143, 143, 143)
         self.textColorOn = QColor(255, 255, 255)
 
+        self.text = text
         self.textOff = "OFF"
         self.textOn = "ON"
 
         self.space = 2
         self.rectRadius = 5
 
-        self.step = self.width() / 50
-        self.startX = 0
-        self.endX = 0
+        self.setFixedSize(self.size)
+        self.step = self.width() / 40
+        if checked:
+            self.startX = self.width() - self.height()
+            self.endX = self.width() - self.height()
+        else:
+            self.startX = 0
+            self.endX = 0
 
         self.timer = QTimer(self)  # 初始化一个定时器
         self.timer.timeout.connect(self.updateValue)  # 计时结束调用operate()方法
 
-        # self.timer.start(5)  # 设置计时间隔并启动
-
         self.setFont(QFont("Microsoft Yahei", 10))
 
-        # self.resize(55,22)
 
     def updateValue(self):
         if self.checked:
@@ -60,7 +64,7 @@ class SliderButton(QWidget):
         # 发射信号
         self.checkedChanged.emit(self.checked)
 
-        # 每次移动的步长为宽度的50分之一
+        # 每次移动的步长为宽度的40分之一
         self.step = self.width() / 40
         # 状态切换改变后自动计算终点坐标
         if self.checked:
@@ -81,8 +85,9 @@ class SliderButton(QWidget):
         self.drawBg(evt, painter)
         # 绘制滑块
         self.drawSlider(evt, painter)
-        # 绘制文字
-        self.drawText(evt, painter)
+        if self.text:
+            # 绘制文字
+            self.drawText(evt, painter)
 
         painter.end()
 

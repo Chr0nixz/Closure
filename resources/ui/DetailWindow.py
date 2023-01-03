@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget
 
-from resources.ui import UI_DetailWindow, DoctorChart
+from resources.ui import UI_DetailWindow, DoctorChart, SettingChart, ScreenshotChart, ExtensionPanel, AboutBanner
 from resources.ui.CircleImage import CircleImage
 
 
@@ -8,8 +8,16 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
     def __init__(self, data):
         super().__init__()
         self.setupUi(self)
-        self.addChart(data)
+        self.data = data
+        self.widgets = []
+        if data['platform'] == 1:
+            self.title = '可露希尔' + data['account'] + '（官服）'
+        else:
+            self.title = '可露希尔' + data['account'] + '（B服）'
+        self.setWindowTitle(self.title)
+        self.addChart()
         self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/img/icon.png")
+        self.addWidgets()
 
     def addAssistantPic(self, img):
         self.charPic = CircleImage(self.centralwidget, 0, 0, 150, 150)
@@ -17,11 +25,33 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         self.charPic.setFixedSize(150, 150)
         self.doctorChart.CharLayout.addWidget(self.charPic)
 
-    def addChart(self, data):
+    def addChart(self):
         widget = QWidget(self.centralwidget)
-        self.doctorChart = DoctorChart.Widget(widget)
-        self.doctorChart.addContent(data)
+        self.doctorChart = DoctorChart.Widget(widget, self.data)
         self.doctorLayout.addWidget(widget, 1, 1)
 
     def addWidgets(self):
-        pass
+        self.settingChart = SettingChart.Widget(self.generateWidget(), self.data)
+        self.screenShot = ScreenshotChart.Widget(self.generateWidget())
+        self.exChart = ExtensionPanel.Widget(self.generateWidget())
+        self.logChart = self.generateWidget()
+        self.aboutBanner = AboutBanner.Widget(self.generateWidget())
+        self.gridLayout_3.addWidget(self.settingChart.parent(), 1, 1, 4, 1)
+        self.gridLayout_3.addWidget(self.screenShot.parent(), 1, 2, 2, 1)
+        self.gridLayout_3.addWidget(self.exChart.parent(), 5, 1, 3, 1)
+        self.gridLayout_3.addWidget(self.logChart, 3, 2, 4, 1)
+        self.gridLayout_3.addWidget(self.aboutBanner.parent(), 8, 1, 1, 2)
+        self.gridLayout_3.setRowStretch(1, 2)
+        self.gridLayout_3.setRowStretch(2, 2)
+        self.gridLayout_3.setRowStretch(3, 2)
+        self.gridLayout_3.setRowStretch(4, 2)
+        self.gridLayout_3.setRowStretch(5, 2)
+        self.gridLayout_3.setRowStretch(6, 2)
+        self.gridLayout_3.setRowStretch(7, 1)
+        self.gridLayout_3.setRowStretch(8, 1)
+        print(self.gridLayout_3.rowCount())
+
+    def generateWidget(self):
+        widget = QWidget(self)
+        self.widgets.append(widget)
+        return widget

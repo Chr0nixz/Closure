@@ -13,6 +13,7 @@ def get(url, auth=None):
         res = requests.get(url, headers=header)
         if res.status_code == 200:
             data = json.loads(res.text)
+            print(data)
             if data['code'] == 1:
                 return data['data']
             else:
