@@ -37,4 +37,8 @@ QPushButton:hover {
 QFrame {
   border-radius: 10px
 }
+
+QPushButton {
+  border-radius: 5px
+}
 '''

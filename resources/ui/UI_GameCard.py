@@ -31,6 +31,8 @@ class Ui_Form(object):
         self.Account_label = QtWidgets.QLabel(self.horizontalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
         self.Account_label.setFont(font)
         self.Account_label.setObjectName("Account_label")
         self.horizontalLayout_5.addWidget(self.Account_label)

@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt, QRectF, QRect, QTimer, pyqtSignal, QSize
+from PyQt5.QtCore import Qt, QRectF, QRect, QTimer, pyqtSignal
 from PyQt5.QtGui import QColor, QPainter, QPainterPath, QFont
 from PyQt5.QtWidgets import QWidget
 
@@ -10,7 +10,6 @@ class SliderButton(QWidget):
     def __init__(self, parent=None, checked=False, text=False, size=(40, 20)):
         super(QWidget, self).__init__(parent)
 
-        self.size = QSize(size[0], size[1])
         self.checked = checked
         self.bgColorOff = QColor(255, 255, 255)
         self.bgColorOn = QColor(255, 193, 7)
@@ -28,7 +27,7 @@ class SliderButton(QWidget):
         self.space = 2
         self.rectRadius = 5
 
-        self.setFixedSize(self.size)
+        self.setMaximumSize(size[0], size[1])
         self.step = self.width() / 40
         if checked:
             self.startX = self.width() - self.height()

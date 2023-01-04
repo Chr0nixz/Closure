@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets
+import qtawesome as qta
 
 from resources.ui import UI_SettingChart, TagLabel, ToggleSwitch
 
@@ -11,6 +12,7 @@ class Widget(QtWidgets.QWidget, UI_SettingChart.Ui_Form):
         self.maxAP = data['status']['maxAp']
         self.config = data['config']
         self.addContent()
+        self.pushButton.setIcon(qta.icon('fa5s.save', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
 
     def addContent(self):
         self.Account.setText('账号：' + self.account)
