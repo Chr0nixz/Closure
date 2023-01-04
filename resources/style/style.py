@@ -33,4 +33,8 @@ QPushButton:hover {
   border-radius: 12px;
   color: #31363b;
 }
+
+QFrame {
+  border-radius: 10px
+}
 '''
