@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget
 
-from resources.ui import UI_DetailWindow, DoctorChart, SettingChart, ScreenshotChart, ExtensionPanel, AboutBanner
+from resources.ui import UI_DetailWindow, DoctorChart, SettingChart, ScreenshotChart, ExtensionPanel, AboutBanner, LogPanel
 from resources.ui.CircleImage import CircleImage
 
 
@@ -34,20 +34,20 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         self.settingChart = SettingChart.Widget(self.generateWidget(), self.data)
         self.screenShot = ScreenshotChart.Widget(self.generateWidget())
         self.exChart = ExtensionPanel.Widget(self.generateWidget())
-        self.logChart = self.generateWidget()
+        self.logChart = LogPanel.Widget(self.generateWidget())
         self.aboutBanner = AboutBanner.Widget(self.generateWidget())
-        self.gridLayout_3.addWidget(self.settingChart.parent(), 1, 1, 4, 1)
-        self.gridLayout_3.addWidget(self.screenShot.parent(), 1, 2, 2, 1)
-        self.gridLayout_3.addWidget(self.exChart.parent(), 5, 1, 3, 1)
-        self.gridLayout_3.addWidget(self.logChart, 3, 2, 4, 1)
-        self.gridLayout_3.addWidget(self.aboutBanner.parent(), 8, 1, 1, 2)
+        self.gridLayout_3.addWidget(self.settingChart.parent(), 1, 1, 4, 4)
+        self.gridLayout_3.addWidget(self.screenShot.parent(), 1, 5, 3, 5)
+        self.gridLayout_3.addWidget(self.exChart.parent(), 5, 1, 3, 4)
+        self.gridLayout_3.addWidget(self.logChart.parent(), 4, 5, 4, 5)
+        self.gridLayout_3.addWidget(self.aboutBanner.parent(), 8, 1, 1, 9)
         self.gridLayout_3.setRowStretch(1, 2)
         self.gridLayout_3.setRowStretch(2, 2)
         self.gridLayout_3.setRowStretch(3, 2)
         self.gridLayout_3.setRowStretch(4, 2)
         self.gridLayout_3.setRowStretch(5, 2)
         self.gridLayout_3.setRowStretch(6, 2)
-        self.gridLayout_3.setRowStretch(7, 1)
+        self.gridLayout_3.setRowStretch(7, 2)
         self.gridLayout_3.setRowStretch(8, 1)
         print(self.gridLayout_3.rowCount())
 
