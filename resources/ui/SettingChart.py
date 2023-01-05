@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets
 import qtawesome as qta
 
 from resources.ui import UI_SettingChart, TagLabel, ToggleSwitch
-from resources.lib import gamedata
+from resources.lib import gamedata, event
 
 class Widget(QtWidgets.QWidget, UI_SettingChart.Ui_Form):
     def __init__(self, parent, data):
@@ -48,3 +48,4 @@ class Widget(QtWidgets.QWidget, UI_SettingChart.Ui_Form):
         self.config['recruitReserve'] = self.RecuritBox.value()
         self.config['recruitIgnoreRobot'] = self.isRecuritIgnore.checked
         self.config['enableBuildingArrange'] = self.isArrange.checked
+        event.postConfig(self.account, self.platform, self.config)

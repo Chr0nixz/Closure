@@ -68,3 +68,11 @@ class MainController():
     def getConfig(self, account, platform):
         data = router.get(url=url + 'Game/Config/' + account + '/' + str(platform), auth=self.token)
         return data
+
+    def postConfig(self, account, platform, config):
+        data = router.post(url=url + 'Game/Config/' + account + '/' + str(platform), auth=self.token, body=config)
+        if data:
+            if data['code'] == 1:
+                return [account, True]
+        else:
+            return [account, False]

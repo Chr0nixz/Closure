@@ -25,6 +25,8 @@ class Ui_Form(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem = QtWidgets.QSpacerItem(15, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.label = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -74,6 +76,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "要不要去Github给可露希尔或者这个客户端点一颗star⭐"))
+        self.label.setText(_translate("Form", "📢  要不要去Github给可露希尔或者这个客户端点一颗star⭐"))
         self.pushButton.setText(_translate("Form", "可露希尔"))
         self.pushButton_2.setText(_translate("Form", "客户端"))

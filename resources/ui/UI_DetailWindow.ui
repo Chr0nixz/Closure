@@ -22,6 +22,18 @@
       </item>
       <item>
        <widget class="Line" name="line">
+        <property name="minimumSize">
+         <size>
+          <width>3</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="lineWidth">
+         <number>3</number>
+        </property>
+        <property name="midLineWidth">
+         <number>1</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>

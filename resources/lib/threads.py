@@ -31,6 +31,7 @@ class getGamesThread(QThread):
 
 class refreshGamesThread(QThread):
     refreshsignal = pyqtSignal(list)
+
     def __init__(self):
         super().__init__()
         self.refreshsignal.connect(event.refreshResult)
@@ -67,6 +68,7 @@ class gamePauseThread(QThread):
 
 class getDetailThread(QThread):
     detailsignal = pyqtSignal(dict)
+
     def __init__(self, account, platform):
         super().__init__()
         self.account = account
@@ -80,3 +82,17 @@ class getDetailThread(QThread):
         data['platform'] = self.platform
         data['config'] = config
         self.detailsignal.emit(data)
+
+
+class postConfigThread(QThread):
+    postsignal = pyqtSignal(list)
+
+    def __init__(self, account, platform, config):
+        super().__init__()
+        self.account = account
+        self.platform = platform
+        self.config = config
+        self.postsignal.connect(event.postConfigResult)
+
+    def run(self) -> None:
+        self.postsignal.emit(event.eventhandler.postConfig(self.account, self.platform, self.config))

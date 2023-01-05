@@ -106,3 +106,12 @@ def gamePauseResult(result):
     if result:
         windows.gamewindow.statusbar.showMessage('提交暂停请求成功！')
         refreshGames()
+
+def postConfig(account, platform, config):
+    th = threads.postConfigThread(account, platform, config)
+    th.start()
+    th.exec()
+
+def postConfigResult(result):
+    if result[1]:
+        windows.detailMessage(result[0], 'success!', '提交成功！')

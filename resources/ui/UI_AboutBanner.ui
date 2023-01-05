@@ -26,6 +26,22 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>15</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
@@ -33,7 +49,7 @@
            </font>
           </property>
           <property name="text">
-           <string>要不要去Github给可露希尔或者这个客户端点一颗star⭐</string>
+           <string>📢  要不要去Github给可露希尔或者这个客户端点一颗star⭐</string>
           </property>
          </widget>
         </item>

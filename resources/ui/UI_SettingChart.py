@@ -213,4 +213,4 @@ class Ui_Form(object):
         self.RecruitIgnore.setText(_translate("Form", "忽略支援机械："))
         self.BattleMaps.setText(_translate("Form", "战斗队列："))
         self.label_8.setText(_translate("Form", "1-7"))
-        self.pushButton.setText(_translate("Form", "保 存"))
+        self.pushButton.setText(_translate("Form", " 保 存"))

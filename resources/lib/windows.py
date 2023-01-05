@@ -23,7 +23,7 @@ class WindowController():
         self.loginwindow.loginFailed()
 
     def serverMaintain(self):
-        QMessageBox.warning(self, '维护中!', '服务器正在维护中，请等待维护结束！', QMessageBox.Ok)
+        QMessageBox.warning(self.loginwindow, '维护中!', '服务器正在维护中，请等待维护结束！', QMessageBox.Ok)
         self.loginwindow.loginFailed()
 
     def addGames(self, accounts):
@@ -35,10 +35,6 @@ class WindowController():
                 self.gamewindow.addFrame()
                 self.gamewindow.addCard(i, num)
                 num += 1
-        else:
-            QMessageBox.warning(self, 'Warning!', '请输入正确的邮箱和密码', QMessageBox.Ok)
-            self.loginwindow = LoginWindow.MainWindow()
-            self.loginwindow.show()
 
     def refreshGames(self, accounts):
         num = 0
@@ -71,3 +67,6 @@ class WindowController():
             i.parent().move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 30,
                             (((num + col - 1) // col) - 1) * 275 + 5)
         self.gamewindow.scrollAreaWidgetContents.setGeometry(0, 0, width, maxheight)
+
+    def detailMessage(self, account, title, text):
+        message = QMessageBox.information(self.detailwindows[account], title, text, QMessageBox.Ok)

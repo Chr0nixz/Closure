@@ -144,6 +144,12 @@
             <property name="text">
              <string>仓 库</string>
             </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item>
@@ -161,6 +167,12 @@
             </property>
             <property name="text">
              <string>编 队</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
             </property>
            </widget>
           </item>

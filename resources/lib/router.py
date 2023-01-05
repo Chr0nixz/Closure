@@ -61,6 +61,22 @@ def post(url, auth=None, body=None):
         return False
 
 
+def getContent(url, auth=None):
+    try:
+        if auth:
+            header = {'Authorization': auth}
+        else:
+            header = None
+
+        res = requests.get(url, headers=header)
+        if res.status_code == 200:
+            return res.content
+        else:
+            raise StatusError(str(res.status_code) + 'Error')
+    except StatusError:
+        return False
+
+
 class CodeError(Exception):
     pass
 
