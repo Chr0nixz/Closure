@@ -11,6 +11,8 @@ class Widget(QtWidgets.QWidget, UI_AboutBanner.Ui_Form):
         self.setupUi(parent)
         self.pushButton.setIcon(qta.icon('mdi.web', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
         self.pushButton_2.setIcon(qta.icon('mdi.github', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
+        self.pushButton.clicked.connect(self.openClosure)
+        self.pushButton_2.clicked.connect(self.openGithub)
 
     def openClosure(self):
         webbrowser.open(url='https://arknights.host')

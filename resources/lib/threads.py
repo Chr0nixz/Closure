@@ -30,8 +30,13 @@ class getGamesThread(QThread):
 
 
 class refreshGamesThread(QThread):
+    refreshsignal = pyqtSignal(list)
     def __init__(self):
         super().__init__()
+        self.refreshsignal.connect(event.refreshResult)
+
+    def run(self) -> None:
+        self.refreshsignal.emit(event.eventhandler.getGames())
 
 
 class gameLoginThread(QThread):
@@ -45,6 +50,19 @@ class gameLoginThread(QThread):
 
     def run(self) -> None:
         self.gameloginsignal.emit(event.eventhandler.gameLogin(self.account, self.platform))
+
+
+class gamePauseThread(QThread):
+    gamepausesignal = pyqtSignal(bool)
+
+    def __init__(self, account, platform):
+        super().__init__()
+        self.account = account
+        self.platform = platform
+        self.gamepausesignal.connect(event.gamePauseResult)
+
+    def run(self) -> None:
+        self.gamepausesignal.emit(event.eventhandler.gamePause(self.account, self.platform))
 
 
 class getDetailThread(QThread):

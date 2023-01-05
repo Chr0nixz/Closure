@@ -40,6 +40,9 @@
             <bold>true</bold>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">color:#ffc107</string>
+          </property>
           <property name="text">
            <string>游戏日志</string>
           </property>

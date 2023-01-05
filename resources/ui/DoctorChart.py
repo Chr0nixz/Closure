@@ -23,17 +23,23 @@ class Widget(QtWidgets.QWidget, UI_DoctorChart.Ui_Form):
         now = time.time()
         lastAPtime = self.data['lastApAddTime']
         maxAP = self.data['maxAp']
-        AP = int((now - lastAPtime) / 360)
-        if self.data['ap'] + AP > maxAP:
-            currentAP = maxAP
+        if self.data['ap'] > maxAP:
+            currentAP = self.data['ap']
         else:
-            currentAP = self.data['ap'] + AP
-        APtime = (maxAP - self.data['ap']) * 360 + lastAPtime
-        APtimeStr = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(APtime))
+            AP = int((now - lastAPtime) / 360)
+            if self.data['ap'] + AP > maxAP:
+                currentAP = maxAP
+            else:
+                currentAP = self.data['ap'] + AP
+            APtime = (maxAP - self.data['ap']) * 360 + lastAPtime
+            APtimeStr = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(APtime))
         value = int(currentAP / maxAP * 100)
         self.CurrentAP.setText(str(currentAP))
         self.maxAP.setText(str(maxAP))
-        self.APBar.setValue(value)
+        if value > 100:
+            self.APBar.setValue(100)
+        else:
+            self.APBar.setValue(value)
         self.APTime.setText(APtimeStr)
         if value in range(0, 50):
             self.APDescription.setText('理智还有一段时间才恢复满呢~')
@@ -44,4 +50,7 @@ class Widget(QtWidgets.QWidget, UI_DoctorChart.Ui_Form):
             self.APBar.setProperty('class', 'danger')
         elif value == 100:
             self.APDescription.setText('理智都溢出啦！是不是出问题了？')
+            self.APBar.setProperty('class', 'danger')
+        elif value > 100:
+            self.APDescription.setText('这么多理智，可露希尔要累死啦！')
             self.APBar.setProperty('class', 'danger')

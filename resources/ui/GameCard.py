@@ -106,6 +106,7 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         self.statusButton.setText(' 暂 停')
         self.statusButton.setProperty('class', 'danger')
         self.statusButton.setIcon(qta.icon('mdi.power', options=[{'scale_factor': 1.4, 'color': 'red'}]))
+        self.statusButton.clicked.connect(self.gamePause)
 
     def setDetailButton(self):
         self.detailButton.setIcon(qta.icon('mdi.card-account-details-star', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
@@ -117,3 +118,8 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         self.statusButton.setText('登陆中')
         self.statusButton.setEnabled(False)
         event.gameLogin(self.account, self.platform)
+
+    def gamePause(self):
+        self.statusButton.setText('暂停中')
+        self.statusButton.setEnabled(False)
+        event.gamePause(self.account, self.platform)

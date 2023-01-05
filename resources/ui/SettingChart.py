@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets
 import qtawesome as qta
 
 from resources.ui import UI_SettingChart, TagLabel, ToggleSwitch
+from resources.lib import gamedata
 
 class Widget(QtWidgets.QWidget, UI_SettingChart.Ui_Form):
     def __init__(self, parent, data):
@@ -11,8 +12,10 @@ class Widget(QtWidgets.QWidget, UI_SettingChart.Ui_Form):
         self.platform = data['platform']
         self.maxAP = data['status']['maxAp']
         self.config = data['config']
+        self.maps = self.config['battleMaps']
         self.addContent()
         self.pushButton.setIcon(qta.icon('fa5s.save', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
+        self.pushButton.clicked.connect(self.saveConfig)
 
     def addContent(self):
         self.Account.setText('账号：' + self.account)
@@ -33,6 +36,15 @@ class Widget(QtWidgets.QWidget, UI_SettingChart.Ui_Form):
         self.horizontalLayout_6.addWidget(self.isAutoBattle)
         self.isRecuritIgnore = ToggleSwitch.SliderButton(checked=self.config['recruitIgnoreRobot'], size=(40, 20))
         self.horizontalLayout_7.addWidget(self.isRecuritIgnore)
+        mapstr = ''
+        for i in self.config['battleMaps']:
+            mapstr = mapstr + gamedata.getMapCode(i)
+        self.label_8.setText(mapstr)
 
-    def resizeEvent(self, event) -> None:
-        pass
+    def saveConfig(self):
+        self.config['isAutoBattle'] = self.isAutoBattle.checked
+        self.config['battleMaps'] = self.maps
+        self.config['keepingAP'] = self.APBox.value()
+        self.config['recruitReserve'] = self.RecuritBox.value()
+        self.config['recruitIgnoreRobot'] = self.isRecuritIgnore.checked
+        self.config['enableBuildingArrange'] = self.isArrange.checked

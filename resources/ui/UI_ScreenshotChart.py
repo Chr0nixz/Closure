@@ -32,6 +32,7 @@ class Ui_Form(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_2.setFont(font)
+        self.label_2.setStyleSheet("color:#ffc107")
         self.label_2.setObjectName("label_2")
         self.verticalLayout.addWidget(self.label_2)
         self.line = QtWidgets.QFrame(self.frame)

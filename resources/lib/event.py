@@ -60,7 +60,14 @@ def getAnnouncement():
 
 
 def refreshGames():
-    windows.refreshGames(eventhandler.getGames())
+    th = threads.refreshGamesThread()
+    th.start()
+    th.exec()
+
+
+def refreshResult(data):
+    if not data == []:
+        windows.refreshGames(data)
 
 
 def getDetail(account, platform):
@@ -86,4 +93,16 @@ def gameLogin(account, platform):
 def gameLoginResult(result):
     if result:
         windows.gamewindow.statusbar.showMessage('提交登录请求成功！')
+        refreshGames()
+
+
+def gamePause(account, platform):
+    th = threads.gamePauseThread(account, platform)
+    th.start()
+    th.exec()
+
+
+def gamePauseResult(result):
+    if result:
+        windows.gamewindow.statusbar.showMessage('提交暂停请求成功！')
         refreshGames()
