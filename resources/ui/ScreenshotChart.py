@@ -21,6 +21,7 @@ class Widget(QtWidgets.QWidget, UI_ScreenshotChart.Ui_Form):
         self.pushButton.clicked.connect(self.left)
         self.pushButton_2.clicked.connect(self.right)
         self.pushButton.setEnabled(False)
+        self.pushButton_2.setEnabled(False)
 
     def addScreenshots(self, screenshots):
         self.screenshots = screenshots
@@ -29,6 +30,7 @@ class Widget(QtWidgets.QWidget, UI_ScreenshotChart.Ui_Form):
             self.screenpixs.append(pix)
         self.maxpix = len(self.screenpixs) - 1
         self.label.setPixmap(self.screenpixs[self.currentpix].scaled(self.label.size()))
+        self.pushButton_2.setEnabled(True)
 
     def repix(self):
         if not self.screenpixs == []:
