@@ -17,7 +17,7 @@ if __name__ == '__main__':
     app.setStyleSheet(stylesheet + style.stylesheet)
     gamedata.init(os.path.join(os.path.dirname(__file__), 'resources', 'json'))
     controller = MainController()
-    controller.setCache(cache.Cache(os.path.dirname(__file__)))
+    controller.setCache(cache.Cache(os.getcwd()))
     configs = config.Config(os.path.join(os.getcwd(), 'Config.json'))
     event.addHandler(controller)
     event.addConfig(configs)
