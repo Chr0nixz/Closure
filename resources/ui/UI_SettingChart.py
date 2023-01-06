@@ -162,7 +162,7 @@ class Ui_Form(object):
         self.label_8.setObjectName("label_8")
         self.horizontalLayout_8.addWidget(self.label_8)
         self.verticalLayout.addLayout(self.horizontalLayout_8)
-        spacerItem9 = QtWidgets.QSpacerItem(20, 5, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Maximum)
+        spacerItem9 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Maximum)
         self.verticalLayout.addItem(spacerItem9)
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")

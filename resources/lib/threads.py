@@ -1,4 +1,4 @@
-# TODO: 多线程分离
+# TODO: 去掉exec()
 from PyQt5.QtCore import QThread, pyqtSignal
 
 from resources.lib import event
@@ -96,3 +96,19 @@ class postConfigThread(QThread):
 
     def run(self) -> None:
         self.postsignal.emit(event.eventhandler.postConfig(self.account, self.platform, self.config))
+
+class pullScreenshotsThread(QThread):
+    pullsignal = pyqtSignal(dict)
+    
+    def __init__(self, sender, account, platform):
+        super().__init__()
+        self.sender = sender
+        self.account = account
+        self.platform = platform
+        self.pullsignal.connect(event.showScreenshots)
+
+    def run(self) -> None:
+        result = event.eventhandler.getScreenshots(self.account, self.platform)
+        res = {'sender': self.sender, 'data': result}
+        self.pullsignal.emit(res)
+        self.quit()

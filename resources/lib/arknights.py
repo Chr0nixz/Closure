@@ -8,6 +8,10 @@ class MainController():
     def __init__(self):
         self.token = None
         self.lastgames = None
+        self.cache = None
+
+    def setCache(self, cache):
+        self.cache = cache
 
     def getStatus(self) -> bool:
         data = router.getJson('https://ak.dzp.me/ann.json')
@@ -76,3 +80,12 @@ class MainController():
                 return [account, True]
         else:
             return [account, False]
+
+    def getScreenshots(self, account, platform):
+        data = router.get(url=url + 'Game/Screenshots/' + account + '/' + str(platform), auth=self.token)
+        if data:
+            screenshots = self.cache.cache_screenshot(data[0])
+            print(screenshots)
+            return screenshots
+        else:
+            return []

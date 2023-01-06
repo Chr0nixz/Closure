@@ -38,4 +38,19 @@ class MainWindow(QMainWindow, UI_GameWindow.Ui_MainWindow):
         self.label.setText(text)
 
     def resizeEvent(self, change) -> None:
-        event.gameCardFlex(self.width())
+        col = self.width() // 380
+        space = (self.width() - col * 400) / col / 2
+        maxheight = 0
+        num = 0
+        for i in self.gameframes:
+            num += 1
+            frameheight = (((num + col - 1) // col) - 1) * 275
+            i.move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 15, (((num + col - 1) // col) - 1) * 275)
+            if frameheight + 260 > maxheight:
+                maxheight = frameheight + 260
+        num = 0
+        for i in self.gamecards:
+            num += 1
+            i.parent().move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 30,
+                            (((num + col - 1) // col) - 1) * 275 + 5)
+        self.scrollAreaWidgetContents.setGeometry(0, 0, self.width(), maxheight)

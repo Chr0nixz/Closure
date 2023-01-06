@@ -36,4 +36,4 @@ def webp2png(path):
     dstimage = os.path.splitext(path)[0] + '.png'
     image.save(dstimage)
     print('%s ---> %s' % (path, dstimage))
-
+    return dstimage

@@ -3,6 +3,7 @@ from resources.lib import threads
 eventhandler = None
 windows = None
 configs = None
+pull_th = None
 
 
 def addHandler(handler):
@@ -80,9 +81,6 @@ def addDetail(data):
     windows.openDetail(data)
 
 
-def gameCardFlex(width):
-    windows.gameCardFlex(width)
-
 
 def gameLogin(account, platform):
     th = threads.gameLoginThread(account, platform)
@@ -107,11 +105,25 @@ def gamePauseResult(result):
         windows.gamewindow.statusbar.showMessage('提交暂停请求成功！')
         refreshGames()
 
+
 def postConfig(account, platform, config):
     th = threads.postConfigThread(account, platform, config)
     th.start()
     th.exec()
 
+
 def postConfigResult(result):
     if result[1]:
         windows.detailMessage(result[0], 'success!', '提交成功！')
+
+
+def pullScreenshots(sender, account, platform):
+    global pull_th
+    pull_th = threads.pullScreenshotsThread(sender, account, platform)
+    pull_th.start()
+    print('ok')
+
+
+def showScreenshots(screenshots):
+    if not screenshots['data'] == []:
+        screenshots['sender'].addScreenshots(screenshots['data'])

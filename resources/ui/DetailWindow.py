@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget
+from PyQt5.QtCore import pyqtSignal
 
 from resources.ui import UI_DetailWindow, DoctorChart, SettingChart, ScreenshotChart, ExtensionPanel, AboutBanner, LogPanel
 from resources.ui.CircleImage import CircleImage
+from resources.lib import event
 
 
 class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
@@ -10,13 +12,15 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         self.setupUi(self)
         self.data = data
         self.widgets = []
-        if data['platform'] == 1:
-            self.title = '可露希尔' + data['account'] + '（官服）'
+        self.account = data['account']
+        self.platform = data['platform']
+        if self.platform == 1:
+            self.title = '可露希尔' + self.account + '（官服）'
         else:
-            self.title = '可露希尔' + data['account'] + '（B服）'
+            self.title = '可露希尔' + self.account + '（B服）'
         self.setWindowTitle(self.title)
         self.addChart()
-        self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/img/icon.png")
+        self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/chars/" + self.data['status']['secretary'] + '.png')
         self.addWidgets()
 
     def addAssistantPic(self, img):
@@ -32,7 +36,7 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
 
     def addWidgets(self):
         self.settingChart = SettingChart.Widget(self.generateWidget(), self.data)
-        self.screenShot = ScreenshotChart.Widget(self.generateWidget())
+        self.screenShot = ScreenshotChart.Widget(self.generateWidget(), self.data)
         self.exChart = ExtensionPanel.Widget(self.generateWidget())
         self.logChart = LogPanel.Widget(self.generateWidget())
         self.aboutBanner = AboutBanner.Widget(self.generateWidget())
@@ -55,3 +59,7 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         widget = QWidget(self)
         self.widgets.append(widget)
         return widget
+
+    def resizeEvent(self, event) -> None:
+        if hasattr(self, 'screenShot'):
+            self.screenShot.repix()

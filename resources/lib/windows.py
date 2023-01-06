@@ -46,27 +46,11 @@ class WindowController():
             num += 1
 
     def openDetail(self, data):
+        if data['account'] in self.detailwindows:
+            self.detailwindows[data['account']].deleteLater()
         detail = DetailWindow.MainWindow(data)
         detail.show()
         self.detailwindows[data['account']] = detail
-
-    def gameCardFlex(self, width):
-        col = width // 380
-        space = (width - col * 400) / col / 2
-        maxheight = 0
-        num = 0
-        for i in self.gamewindow.gameframes:
-            num += 1
-            frameheight = (((num + col - 1) // col) - 1) * 275
-            i.move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 15, (((num + col - 1) // col) - 1) * 275)
-            if frameheight + 260 > maxheight:
-                maxheight = frameheight + 260
-        num = 0
-        for i in self.gamewindow.gamecards:
-            num += 1
-            i.parent().move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 30,
-                            (((num + col - 1) // col) - 1) * 275 + 5)
-        self.gamewindow.scrollAreaWidgetContents.setGeometry(0, 0, width, maxheight)
 
     def detailMessage(self, account, title, text):
         message = QMessageBox.information(self.detailwindows[account], title, text, QMessageBox.Ok)
