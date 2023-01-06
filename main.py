@@ -1,5 +1,6 @@
 import os
 import sys
+import ctypes
 
 from PyQt5.QtWidgets import QApplication
 from qt_material import apply_stylesheet
@@ -20,6 +21,7 @@ if __name__ == '__main__':
     configs = config.Config(os.path.join(os.getcwd(), 'Config.json'))
     event.addHandler(controller)
     event.addConfig(configs)
-    windows = WindowController(controller)
+    windows = WindowController(controller, os.path.dirname(__file__))
     event.addWindows(windows)
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("Chr0nix.Closure.Helper.v1")
     sys.exit(app.exec_())

@@ -1,3 +1,5 @@
+import os
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMessageBox
 
 from resources.lib import event, gamedata
@@ -5,15 +7,19 @@ from resources.ui import LoginWindow, GameWindow, DetailWindow
 
 
 class WindowController():
-    def __init__(self, controller):
+    def __init__(self, controller, path):
         self.controller = controller
+        self.path = path
         self.loginwindow = LoginWindow.MainWindow()
+        self.icon = QIcon(os.path.join(self.path, 'resources', 'img', 'icon.png'))
+        self.loginwindow.setWindowIcon(self.icon)
         self.loginwindow.show()
-        self.gamewindow = GameWindow.MainWindow()
         self.detailwindows = {}
         self.accountconfigs = {}
 
     def loginOK(self, accounts):
+        self.gamewindow = GameWindow.MainWindow()
+        self.gamewindow.setWindowIcon(self.icon)
         self.addGames(accounts)
         self.gamewindow.addAnnouncement(event.getAnnouncement())
         self.loginwindow.hide()
@@ -49,6 +55,7 @@ class WindowController():
         if data['account'] in self.detailwindows:
             self.detailwindows[data['account']].deleteLater()
         detail = DetailWindow.MainWindow(data)
+        detail.setWindowIcon(self.icon)
         detail.show()
         self.detailwindows[data['account']] = detail
 
