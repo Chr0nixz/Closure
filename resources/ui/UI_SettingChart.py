@@ -195,7 +195,7 @@ class Ui_Form(object):
         self.horizontalLayout_9.addWidget(self.line_5)
         self.verticalLayout.addLayout(self.horizontalLayout_9)
         self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
-        spacerItem10 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        spacerItem10 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.gridLayout.addItem(spacerItem10, 1, 0, 1, 1)
         self.verticalLayout_2.addWidget(self.frame)
 

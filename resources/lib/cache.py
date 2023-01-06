@@ -12,8 +12,11 @@ class Cache():
         if not os.path.exists(self.screenshot_path):
             os.mkdir(self.screenshot_path)
 
-    def cache_screenshot(self, data):
-        screenshot_folder = os.path.join(self.screenshot_path, str(data['UTCTime']))
+    def cache_screenshot(self, account, platform, data):
+        game_folder = os.path.join(self.screenshot_path, str(platform) + account)
+        if not os.path.exists(game_folder):
+            os.mkdir(game_folder)
+        screenshot_folder = os.path.join(game_folder, str(data['UTCTime']))
         screenshots = []
         if os.path.exists(screenshot_folder):
             for i in os.listdir(screenshot_folder):

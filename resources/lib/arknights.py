@@ -84,7 +84,7 @@ class MainController():
     def getScreenshots(self, account, platform):
         data = router.get(url=url + 'Game/Screenshots/' + account + '/' + str(platform), auth=self.token)
         if data:
-            screenshots = self.cache.cache_screenshot(data[0])
+            screenshots = self.cache.cache_screenshot(account, platform, data[0])
             print(screenshots)
             return screenshots
         else:
