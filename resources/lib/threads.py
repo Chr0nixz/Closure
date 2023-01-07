@@ -15,6 +15,7 @@ class LoginThread(QThread):
 
     def run(self) -> None:
         self.loginsignal.emit(event.eventhandler.login(self.email, self.password))
+        event.ths.remove(self)
         self.quit()
 
 
@@ -27,6 +28,8 @@ class getGamesThread(QThread):
 
     def run(self) -> None:
         self.getgamessignal.emit(event.eventhandler.getGames())
+        event.ths.remove(self)
+        self.quit()
 
 
 class refreshGamesThread(QThread):
@@ -38,6 +41,8 @@ class refreshGamesThread(QThread):
 
     def run(self) -> None:
         self.refreshsignal.emit(event.eventhandler.getGames())
+        event.ths.remove(self)
+        self.quit()
 
 
 class gameLoginThread(QThread):
@@ -51,6 +56,8 @@ class gameLoginThread(QThread):
 
     def run(self) -> None:
         self.gameloginsignal.emit(event.eventhandler.gameLogin(self.account, self.platform))
+        event.ths.remove(self)
+        self.quit()
 
 
 class gamePauseThread(QThread):
@@ -64,6 +71,8 @@ class gamePauseThread(QThread):
 
     def run(self) -> None:
         self.gamepausesignal.emit(event.eventhandler.gamePause(self.account, self.platform))
+        event.ths.remove(self)
+        self.quit()
 
 
 class getDetailThread(QThread):
@@ -82,6 +91,8 @@ class getDetailThread(QThread):
         data['platform'] = self.platform
         data['config'] = config
         self.detailsignal.emit(data)
+        event.ths.remove(self)
+        self.quit()
 
 
 class postConfigThread(QThread):
@@ -96,6 +107,8 @@ class postConfigThread(QThread):
 
     def run(self) -> None:
         self.postsignal.emit(event.eventhandler.postConfig(self.account, self.platform, self.config))
+        event.ths.remove(self)
+        self.quit()
 
 class pullScreenshotsThread(QThread):
     pullsignal = pyqtSignal(dict)
@@ -111,4 +124,7 @@ class pullScreenshotsThread(QThread):
         result = event.eventhandler.getScreenshots(self.account, self.platform)
         res = {'sender': self.sender, 'data': result}
         self.pullsignal.emit(res)
+        print(event.ths)
+        event.ths.remove(self)
         self.quit()
+        print('ok')

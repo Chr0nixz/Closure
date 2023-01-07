@@ -3,7 +3,7 @@ from resources.lib import threads
 eventhandler = None
 windows = None
 configs = None
-pull_th = None
+ths = []
 
 
 def addHandler(handler):
@@ -24,7 +24,7 @@ def addConfig(config):
 def login(email, password):
     th = threads.LoginThread(email, password)
     th.start()
-    th.exec()
+    ths.append(th)
 
 
 def loginResult(result):
@@ -41,7 +41,7 @@ def loginResult(result):
 def getGames():
     th = threads.getGamesThread()
     th.start()
-    th.exec()
+    ths.append(th)
 
 
 def loginOK(accounts):
@@ -63,7 +63,7 @@ def getAnnouncement():
 def refreshGames():
     th = threads.refreshGamesThread()
     th.start()
-    th.exec()
+    ths.append(th)
 
 
 def refreshResult(data):
@@ -74,7 +74,7 @@ def refreshResult(data):
 def getDetail(account, platform):
     th = threads.getDetailThread(account, platform)
     th.start()
-    th.exec()
+    ths.append(th)
 
 
 def addDetail(data):
@@ -85,7 +85,7 @@ def addDetail(data):
 def gameLogin(account, platform):
     th = threads.gameLoginThread(account, platform)
     th.start()
-    th.exec()
+    ths.append(th)
 
 
 def gameLoginResult(result):
@@ -97,7 +97,7 @@ def gameLoginResult(result):
 def gamePause(account, platform):
     th = threads.gamePauseThread(account, platform)
     th.start()
-    th.exec()
+    ths.append(th)
 
 
 def gamePauseResult(result):
@@ -109,7 +109,7 @@ def gamePauseResult(result):
 def postConfig(account, platform, config):
     th = threads.postConfigThread(account, platform, config)
     th.start()
-    th.exec()
+    ths.append(th)
 
 
 def postConfigResult(result):
@@ -118,12 +118,13 @@ def postConfigResult(result):
 
 
 def pullScreenshots(sender, account, platform):
-    global pull_th
-    pull_th = threads.pullScreenshotsThread(sender, account, platform)
-    pull_th.start()
-    print('ok')
+    th = threads.pullScreenshotsThread(sender, account, platform)
+    th.start()
+    ths.append(th)
 
 
 def showScreenshots(screenshots):
-    if not screenshots['data'] == []:
+    if screenshots['data'] == []:
+        screenshots['sender'].noScreenshots()
+    else:
         screenshots['sender'].addScreenshots(screenshots['data'])

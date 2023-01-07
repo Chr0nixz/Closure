@@ -24,6 +24,7 @@ class Widget(QtWidgets.QWidget, UI_ScreenshotChart.Ui_Form):
         self.pushButton_2.setEnabled(False)
 
     def addScreenshots(self, screenshots):
+        self.label.setText('')
         self.screenshots = screenshots
         for i in self.screenshots:
             pix = QPixmap(i)
@@ -31,6 +32,9 @@ class Widget(QtWidgets.QWidget, UI_ScreenshotChart.Ui_Form):
         self.maxpix = len(self.screenpixs) - 1
         self.label.setPixmap(self.screenpixs[self.currentpix].scaled(self.label.size()))
         self.pushButton_2.setEnabled(True)
+
+    def noScreenshots(self):
+        self.label.setText('暂时没有游戏截图')
 
     def repix(self):
         if not self.screenpixs == []:
