@@ -4,21 +4,22 @@ eventhandler = None
 windows = None
 configs = None
 ths = []
+methods = {}
+
+
+def init(handler, window, config):
+    global eventhandler, windows, configs, methods
+    eventhandler = handler
+    windows = window
+    configs = config
+    methods = {
+        'log': eventhandler.getLogs
+    }
 
 
 def addHandler(handler):
     global eventhandler
     eventhandler = handler
-
-
-def addWindows(app):
-    global windows
-    windows = app
-
-
-def addConfig(config):
-    global configs
-    configs = config
 
 
 def login(email, password):
@@ -81,7 +82,6 @@ def addDetail(data):
     windows.openDetail(data)
 
 
-
 def gameLogin(account, platform):
     th = threads.gameLoginThread(account, platform)
     th.start()
@@ -128,3 +128,10 @@ def showScreenshots(screenshots):
         screenshots['sender'].noScreenshots()
     else:
         screenshots['sender'].addScreenshots(screenshots['data'])
+
+
+def process(func: str, args: list, handler=None):
+    method = methods[func]
+    th = threads.ProcessThread(method, args, handler)
+    th.start()
+    ths.append(th)

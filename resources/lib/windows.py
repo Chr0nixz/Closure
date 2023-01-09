@@ -10,12 +10,14 @@ class WindowController():
     def __init__(self, controller, path):
         self.controller = controller
         self.path = path
+        self.detailwindows = {}
+        self.accountconfigs = {}
+
+    def start(self):
         self.loginwindow = LoginWindow.MainWindow()
         self.icon = QIcon(os.path.join(self.path, 'resources', 'img', 'icon.png'))
         self.loginwindow.setWindowIcon(self.icon)
         self.loginwindow.show()
-        self.detailwindows = {}
-        self.accountconfigs = {}
 
     def loginOK(self, accounts):
         self.gamewindow = GameWindow.MainWindow()

@@ -89,3 +89,12 @@ class MainController():
             return screenshots
         else:
             return []
+
+    def getLogs(self, args):
+        account = args[0]
+        platform = args[1]
+        data = router.get(url=url + 'Game/Log/' + account + '/' + str(platform) + '/0', auth=self.token)
+        if data:
+            return [True, data]
+        else:
+            return [False]

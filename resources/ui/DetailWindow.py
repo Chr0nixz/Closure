@@ -22,6 +22,7 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         self.addChart()
         self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/chars/" + self.data['status']['secretary'] + '.png')
         self.addWidgets()
+        self.getData()
 
     def addAssistantPic(self, img):
         self.charPic = CircleImage(self.centralwidget, 0, 0, 150, 150)
@@ -59,6 +60,9 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
         widget = QWidget(self)
         self.widgets.append(widget)
         return widget
+
+    def getData(self):
+        event.process('log', [self.account, self.platform], self.logChart.addContent)
 
     def resizeEvent(self, event) -> None:
         if hasattr(self, 'screenShot'):

@@ -110,9 +110,10 @@ class postConfigThread(QThread):
         event.ths.remove(self)
         self.quit()
 
+
 class pullScreenshotsThread(QThread):
     pullsignal = pyqtSignal(dict)
-    
+
     def __init__(self, sender, account, platform):
         super().__init__()
         self.sender = sender
@@ -128,3 +129,18 @@ class pullScreenshotsThread(QThread):
         event.ths.remove(self)
         self.quit()
         print('ok')
+
+
+class ProcessThread(QThread):
+    processSignal = pyqtSignal(list)
+
+    def __init__(self, method, kwargs, handler):
+        super().__init__()
+        self.method = method
+        self.kwargs = kwargs
+        self.handler = handler
+        self.processSignal.connect(self.handler)
+
+    def run(self) -> None:
+        self.processSignal.emit(self.method(self.kwargs))
+
