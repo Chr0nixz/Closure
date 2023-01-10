@@ -1,4 +1,3 @@
-# TODO: 去掉exec()
 from PyQt5.QtCore import QThread, pyqtSignal
 
 from resources.lib import event
@@ -143,4 +142,6 @@ class ProcessThread(QThread):
 
     def run(self) -> None:
         self.processSignal.emit(self.method(self.kwargs))
+        event.ths.remove(self)
+        self.quit()
 

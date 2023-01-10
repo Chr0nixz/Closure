@@ -21,17 +21,19 @@ class MainController():
         else:
             return False
 
-    def login(self, email, password) -> int:
+    def login(self, args) -> list:
+        email = args[0]
+        password = args[1]
         if self.getStatus():
             data = router.get(url=url + 'Auth/' + email + '/' + password)
             if data:
                 self.token = data['token']
                 event.configAccount(email, password)
-                return 1
+                return [True]
             else:
-                return 0
+                return [False, 1]
         else:
-            return -1
+            return [False, 0]
 
     def getGames(self) -> list:
 

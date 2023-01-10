@@ -13,7 +13,8 @@ def init(handler, window, config):
     windows = window
     configs = config
     methods = {
-        'log': eventhandler.getLogs
+        'log': eventhandler.getLogs,
+        'login': eventhandler.login
     }
 
 
@@ -29,14 +30,14 @@ def login(email, password):
 
 
 def loginResult(result):
-    match result:
-        case -1:
+    if result[0]:
+        windows.loginwindow.statusbar.showMessage('登陆成功，正在跳转...')
+        getGames()
+    else:
+        if result[1] == 0:
             windows.serverMaintain()
-        case 0:
-            windows.loginFailed()
-        case 1:
-            windows.loginwindow.statusbar.showMessage('登陆成功，正在跳转...')
-            getGames()
+        else:
+            windows.serverMaintain()
 
 
 def getGames():

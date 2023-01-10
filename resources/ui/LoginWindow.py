@@ -34,7 +34,7 @@ class MainWindow(QMainWindow, UI_LoginWindow.Ui_LoginWindow):
             self.email_input.setEnabled(False)
             self.password_input.setEnabled(False)
             self.LoginButton.setEnabled(False)
-            event.login(self.email_input.text(), self.password_input.text())
+            event.process('login', [self.email_input.text(), self.password_input.text()], event.loginResult)
 
     def loginFailed(self):
         QMessageBox.critical(self, 'Wrong!', '邮箱或密码错误', QMessageBox.Ok)

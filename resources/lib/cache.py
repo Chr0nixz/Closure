@@ -19,8 +19,18 @@ class Cache():
         screenshot_folder = os.path.join(game_folder, str(data['UTCTime']))
         screenshots = []
         if os.path.exists(screenshot_folder):
-            for i in os.listdir(screenshot_folder):
-                screenshots.append(os.path.join(screenshot_folder, i))
+            dir = os.listdir(screenshot_folder)
+            if dir == data['fileName']:
+                for i in data['fileName']:
+                    screenshots.append(os.path.join(screenshot_folder, i))
+            else:
+                for i in data['fileName']:
+                    content = router.getContent(url=data['url'] + i)
+                    file_path = os.path.join(screenshot_folder, i)
+                    open(file_path, 'wb').write(content)
+                    png_path = getImg.webp2png(file_path)
+                    os.remove(file_path)
+                    screenshots.append(png_path)
         else:
             os.mkdir(screenshot_folder)
             for i in data['fileName']:
