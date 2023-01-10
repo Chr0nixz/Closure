@@ -29,4 +29,7 @@
 - 一些漂亮的界面（永远的坑）
 
 ### 截图：
-
+<div align="center">
+<img src="./screenshot/1.png">
+<img src="./screenshot/2.png">
+</div>
