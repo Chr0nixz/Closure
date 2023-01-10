@@ -1,5 +1,5 @@
 <div align="center">
-<img alt="Closure" src="./resources/img/icon.png" width="256" height="256">
+<img alt="Closure" src="./resources/img/Closure.png" width="256" height="256">
 </div>
 
 # Closure 小帮手
