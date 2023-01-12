@@ -120,5 +120,3 @@ class DownloadThread(QThread):
         super().__init__()
     
     
-
-update('C:/Users/czxxx/Desktop/Closure/resources/')
