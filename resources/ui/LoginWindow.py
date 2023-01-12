@@ -15,7 +15,6 @@ class MainWindow(QMainWindow, UI_LoginWindow.Ui_LoginWindow):
         self.setupUi(self)
         self.resize(450, 600)
         self.setWindowFlags(QtCore.Qt.WindowCloseButtonHint)
-        self.setWindowOpacity(0.96)
         self.Label_closure.setProperty('class', 'closure_label')
         self.LoginButton.setIcon(qta.icon('mdi.login', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
         self.LoginButton.clicked.connect(self.login)

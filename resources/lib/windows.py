@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMessageBox
 
 from resources.lib import event, gamedata
-from resources.ui import LoginWindow, GameWindow, DetailWindow
+from resources.ui import LoginWindow, GameWindow, DetailWindow, CheckUpdateWindow
 
 
 class WindowController():
@@ -12,10 +12,10 @@ class WindowController():
         self.path = path
         self.detailwindows = {}
         self.accountconfigs = {}
+        self.icon = QIcon(os.path.join(self.path, 'resources', 'img', 'icon.png'))
 
     def start(self):
         self.loginwindow = LoginWindow.MainWindow()
-        self.icon = QIcon(os.path.join(self.path, 'resources', 'img', 'icon.png'))
         self.loginwindow.setWindowIcon(self.icon)
         self.loginwindow.show()
 
