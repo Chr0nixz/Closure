@@ -7,7 +7,7 @@ from qt_material import apply_stylesheet
 
 from resources.lib.arknights import MainController
 from resources.lib.windows import WindowController
-from resources.lib import event, config, gamedata, cache
+from resources.lib import event, config, gamedata, cache, constant
 from resources.style import style
 
 if __name__ == '__main__':
@@ -20,6 +20,7 @@ if __name__ == '__main__':
     app.setStyleSheet(stylesheet + style.stylesheet)
 
     gamedata.init(os.path.join(os.path.dirname(__file__), 'resources', 'json'))
+    constant.init(os.getcwd())
     controller = MainController()
     controller.setCache(cache.Cache(os.getcwd()))
     configs = config.Config(os.path.join(os.getcwd(), 'Config.json'))

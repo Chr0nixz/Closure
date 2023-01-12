@@ -1,9 +1,8 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget
-from PyQt5.QtCore import pyqtSignal
 
 from resources.ui import UI_DetailWindow, DoctorChart, SettingChart, ScreenshotChart, ExtensionPanel, AboutBanner, LogPanel
 from resources.ui.CircleImage import CircleImage
-from resources.lib import event
+from resources.lib import event, constant
 
 
 class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
@@ -20,7 +19,7 @@ class MainWindow(QMainWindow, UI_DetailWindow.Ui_MainWindow):
             self.title = '可露希尔' + self.account + '（B服）'
         self.setWindowTitle(self.title)
         self.addChart()
-        self.addAssistantPic("C:/Users/czxxx/Desktop/Closure/resources/chars/" + self.data['status']['secretary'] + '.png')
+        self.addAssistantPic(constant.chars_path + self.data['status']['secretary'] + '.png')
         self.addWidgets()
         self.getData()
 
