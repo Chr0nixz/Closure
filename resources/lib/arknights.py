@@ -21,7 +21,7 @@ class MainController():
         else:
             return False
 
-    def login(self, args) -> list:
+    def login(self, args: list) -> list:
         email = args[0]
         password = args[1]
         if self.getStatus():

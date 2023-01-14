@@ -1,15 +1,13 @@
-import os
 import io
 import json
-from typing import Tuple, Any
+import os
 
 import requests
-import time
-
 from PIL import Image
 from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtWidgets import QMessageBox
 
-from resources.ui import CheckUpdateWindow
+from resources.ui import CheckUpdateWindow, UpdatingWindow
 
 
 def check_version(path) -> int:
@@ -24,16 +22,15 @@ def check_version(path) -> int:
             else:
                 return False
     else:
-        current_version = requests.get(
-            'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/data_version.txt').text
-        with open(version_path, 'w', encoding='utf-8') as fp:
-            fp.write(current_version)
         return False
 
 
-def get_jsons(path) -> tuple[Any, Any]:
-    items = json.loads(requests.get('https://arknights.host/data/Items.json').text)
-    stage = json.loads(requests.get('https://arknights.host/data/Stage.json').text)
+def get_jsons(path):
+    try:
+        items = json.loads(requests.get('https://arknights.host/data/Items.json').text)
+        stage = json.loads(requests.get('https://arknights.host/data/Stage.json').text)
+    except requests.exceptions.ConnectionError:
+        return False
     with open(os.path.join(path, 'json', 'Items.json'), 'w', encoding='utf-8') as fp:
         json.dump(items, fp, ensure_ascii=False, indent=4)
     with open(os.path.join(path, 'json', 'Stage.json'), 'w', encoding='utf-8') as fp:
@@ -54,29 +51,17 @@ def get_item(img_path, img_name) -> str:
 def get_char(img_path, img_name) -> None:
     url = 'https://ak.dzp.me/dst/avatar/ASSISTANT/' + img_name + '.webp'
     content = requests.get(url).content
-    if not '<html>' in content:
+    try:
         image = Image.open(io.BytesIO(content))
         image.save(img_path)
-
-
-def update(path):
-    items, stage = get_jsons(path)
-    print()
-    for i in items:
-        img_path = os.path.join(path, 'items', items[i]['icon'] + '.png')
-        if not os.path.isfile(img_path):
-            get_item(img_path, items[i]['icon'])
-            print(img_path)
-    for i in items:
-        img_path = os.path.join(path, 'items', stage[i]['icon'] + '.png')
-        if not os.path.isfile(img_path):
-            get_item(img_path, stage[i]['icon'])
+    except Exception:
+        print(img_name)
 
 
 class Update():
 
     def __init__(self, path, window):
-        self.path = path
+        self.path = os.path.join(path, 'resources')
         self.windows = window
         self.check_window = CheckUpdateWindow.MainWindow(self.windows.icon)
 
@@ -90,7 +75,19 @@ class Update():
             self.check_window.updated()
             self.windows.start()
             self.check_window.hide()
+        else:
+            self.check_window = UpdatingWindow.MainWindow()
+            self.check_window.show()
+            self.updateThread = UpdateThread(self, self.path, None)
+            self.updateThread.start()
 
+    def exception(self):
+        QMessageBox.critical(self.check_window, '错误', '检查更新失败！', QMessageBox.Ok)
+        self.check_window = None
+        self.windows.start()
+
+    def update(self, update):
+        self.check_window.label_2.setText(update)
 
 class CheckUpdateThread(QThread):
     update_signal = pyqtSignal(bool)
@@ -107,16 +104,55 @@ class CheckUpdateThread(QThread):
 
 class UpdateThread(QThread):
     update_signal = pyqtSignal(str)
+    value_signal = pyqtSignal(int)
     finish_signal = pyqtSignal(bool)
+    exception_signal = pyqtSignal(bool)
 
-    def __init__(self, path, call):
+    def __init__(self, parent, path, call):
         super().__init__()
+        self.parent = parent
         self.path = path
         self.call = call
+        self.update_signal.connect(self.parent.update)
+        self.exception_signal.connect(self.parent.exception)
+
+    def run(self) -> None:
+        if n := get_jsons(self.path):
+            items, stage = n
+        else:
+            self.exception_signal.emit(True)
+            return
+        items_queue = []
+        self.workers = []
+        if not os.path.isdir(n := os.path.join(self.path, 'items')):
+            os.mkdir(n)
+        for i in items:
+            img_path = os.path.join(self.path, 'items', items[i]['icon'] + '.png')
+            if not os.path.isfile(img_path):
+                items_queue.append((img_path, items[i]['icon']))
+        print(items_queue)
+        for i in range(0, 20):
+            self.workers.append(DownloadThread(0, items_queue, self.update_signal, self.exception_signal))
+            for j in self.workers:
+                j.start()
 
 
 class DownloadThread(QThread):
-    def __init__(self):
+    def __init__(self, type, queue, update_signal, exception_signal):
         super().__init__()
-    
-    
+        self.type = type
+        self.queue = queue
+        self.update_signal = update_signal
+        self.exception_signal = exception_signal
+
+    def run(self) -> None:
+        while not self.queue == []:
+            if self.type == 0:
+                item = self.queue.pop()
+                if get_item(item[0], item[1]):
+                    self.update_signal.emit(item[1])
+                else:
+                    self.update_signal.emit(item[1])
+            else:
+                get_char(self.queue.pop())
+

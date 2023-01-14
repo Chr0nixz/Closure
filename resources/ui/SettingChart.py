@@ -36,10 +36,10 @@ class Widget(QtWidgets.QWidget, UI_SettingChart.Ui_Form):
         self.horizontalLayout_6.addWidget(self.isAutoBattle)
         self.isRecuritIgnore = ToggleSwitch.SliderButton(checked=self.config['recruitIgnoreRobot'], size=(40, 20))
         self.horizontalLayout_7.addWidget(self.isRecuritIgnore)
-        mapstr = ''
+        mapstr = []
         for i in self.config['battleMaps']:
-            mapstr = mapstr + gamedata.getMapCode(i)
-        self.label_8.setText(mapstr)
+            mapstr.append(gamedata.getMapCode(i))
+        print([i for i in mapstr], sep='、')
 
     def saveConfig(self):
         self.config['isAutoBattle'] = self.isAutoBattle.checked
