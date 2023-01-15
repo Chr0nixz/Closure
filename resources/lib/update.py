@@ -7,22 +7,22 @@ from PIL import Image
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtWidgets import QMessageBox
 
-from resources.ui import CheckUpdateWindow, UpdatingWindow
+from resources.ui import CheckUpdateWindow, UpdatingWindow, NewUpdateWindow
 
 
-def check_version(path) -> int:
+def check_version(path) -> list:
     version_path = os.path.join(path, 'resources', 'json', 'version.txt')
+    current_version = requests.get(
+        'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/data_version.txt').text
     if os.path.isfile(version_path):
-        current_version = requests.get(
-            'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/data_version.txt').text
         with open(version_path, 'r', encoding='utf-8') as fp:
             if fp.read() == current_version:
                 print('1')
-                return True
+                return [True, current_version]
             else:
-                return False
+                return [False]
     else:
-        return False
+        return [True, current_version]
 
 
 def get_jsons(path):
@@ -71,26 +71,31 @@ class Update():
         self.checkUpdateThread.start()
 
     def isUpdated(self, updated):
-        if updated:
+        if not updated[0]:
             self.check_window.updated()
             self.windows.start()
             self.check_window.hide()
         else:
-            self.check_window = UpdatingWindow.MainWindow()
+            self.check_window = NewUpdateWindow.MainWindow(self.windows.icon, self.update)
+            #self.check_window
             self.check_window.show()
-            self.updateThread = UpdateThread(self, self.path, None)
-            self.updateThread.start()
+
+    def update(self):
+        self.check_window = UpdatingWindow.MainWindow()
+        self.check_window.show()
+        self.updateThread = UpdateThread(self, self.path, None)
+        self.updateThread.start()
 
     def exception(self):
         QMessageBox.critical(self.check_window, '错误', '检查更新失败！', QMessageBox.Ok)
         self.check_window = None
         self.windows.start()
 
-    def update(self, update):
+    def update_status(self, update):
         self.check_window.label_2.setText(update)
 
 class CheckUpdateThread(QThread):
-    update_signal = pyqtSignal(bool)
+    update_signal = pyqtSignal(list)
 
     def __init__(self, path, call):
         super().__init__()
@@ -113,7 +118,7 @@ class UpdateThread(QThread):
         self.parent = parent
         self.path = path
         self.call = call
-        self.update_signal.connect(self.parent.update)
+        self.update_signal.connect(self.parent.update_status)
         self.exception_signal.connect(self.parent.exception)
 
     def run(self) -> None:
