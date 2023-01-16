@@ -73,11 +73,10 @@ class Update():
     def isUpdated(self, updated):
         if not updated[0]:
             self.check_window.updated()
-            self.windows.start()
-            self.check_window.hide()
+            self.finish()
         else:
-            self.check_window = NewUpdateWindow.MainWindow(self.windows.icon, self.update)
-            #self.check_window
+            self.check_window = NewUpdateWindow.MainWindow(self.windows.icon, self.update, self.finish)
+            self.check_window.addText(updated[1])
             self.check_window.show()
 
     def update(self):
@@ -93,6 +92,12 @@ class Update():
 
     def update_status(self, update):
         self.check_window.label_2.setText(update)
+
+    def finish(self):
+        self.windows.start()
+        self.check_window.hide()
+        self.check_window = None
+        del self
 
 class CheckUpdateThread(QThread):
     update_signal = pyqtSignal(list)

@@ -26,11 +26,12 @@ class Cache():
             else:
                 for i in data['fileName']:
                     content = router.getContent(url=data['url'] + i)
-                    file_path = os.path.join(screenshot_folder, i)
-                    open(file_path, 'wb').write(content)
-                    png_path = getImg.webp2png(file_path)
-                    os.remove(file_path)
-                    screenshots.append(png_path)
+                    if content:
+                        file_path = os.path.join(screenshot_folder, i)
+                        open(file_path, 'wb').write(content)
+                        png_path = getImg.webp2png(file_path)
+                        os.remove(file_path)
+                        screenshots.append(png_path)
         else:
             os.mkdir(screenshot_folder)
             for i in data['fileName']:

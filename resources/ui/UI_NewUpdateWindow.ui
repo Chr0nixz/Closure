@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>362</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -84,16 +84,9 @@
       </item>
       <item>
        <widget class="QTextEdit" name="textEdit">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPlainTextEdit" name="plainTextEdit">
         <property name="font">
          <font>
-          <pointsize>11</pointsize>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="readOnly">
@@ -219,7 +212,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>10</height>
+          <height>15</height>
          </size>
         </property>
        </spacer>
@@ -249,13 +242,13 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>100</width>
-            <height>40</height>
+            <width>120</width>
+            <height>45</height>
            </size>
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>14</pointsize>
            </font>
           </property>
           <property name="text">
@@ -292,17 +285,17 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>100</width>
-            <height>40</height>
+            <width>120</width>
+            <height>45</height>
            </size>
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>14</pointsize>
            </font>
           </property>
           <property name="text">
-           <string>取消</string>
+           <string>忽略</string>
           </property>
           <property name="iconSize">
            <size>
@@ -338,7 +331,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>10</height>
+          <height>15</height>
          </size>
         </property>
        </spacer>
