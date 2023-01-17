@@ -3,21 +3,6 @@ from PyQt5.QtCore import QThread, pyqtSignal
 from resources.lib import event
 
 
-class LoginThread(QThread):
-    loginsignal = pyqtSignal(int)
-
-    def __init__(self, email, password):
-        super().__init__()
-        self.email = email
-        self.password = password
-        self.loginsignal.connect(event.loginResult)
-
-    def run(self) -> None:
-        self.loginsignal.emit(event.eventhandler.login(self.email, self.password))
-        event.ths.remove(self)
-        self.quit()
-
-
 class getGamesThread(QThread):
     getgamessignal = pyqtSignal(list)
 
@@ -133,15 +118,18 @@ class pullScreenshotsThread(QThread):
 class ProcessThread(QThread):
     processSignal = pyqtSignal(list)
 
-    def __init__(self, method, kwargs, handler):
+    def __init__(self, method, args, handler):
         super().__init__()
         self.method = method
-        self.kwargs = kwargs
+        self.args = args
         self.handler = handler
         self.processSignal.connect(self.handler)
 
     def run(self) -> None:
-        self.processSignal.emit(self.method(self.kwargs))
+        if self.args:
+            self.processSignal.emit(self.method(self.args))
+        else:
+            self.processSignal.emit(self.method())
         event.ths.remove(self)
         self.quit()
 

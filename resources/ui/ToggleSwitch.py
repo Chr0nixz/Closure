@@ -41,7 +41,6 @@ class SliderButton(QWidget):
 
         self.setFont(QFont("Microsoft Yahei", 10))
 
-
     def updateValue(self):
         if self.checked:
             if self.startX < self.endX:

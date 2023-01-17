@@ -7,7 +7,7 @@ respath = './resources/json/'
 class MainController():
     def __init__(self):
         self.token = None
-        self.lastgames = None
+        self.lastGames = None
         self.cache = None
 
     def setCache(self, cache):
@@ -36,12 +36,11 @@ class MainController():
             return [False, 0]
 
     def getGames(self) -> list:
-
         data = router.get(url=url + 'Game/', auth=self.token)
         if data == self.lastgames:
             return []
         else:
-            self.lastgames = data
+            self.lastGames = data
             return data
 
     def getAnnouncement(self):

@@ -14,7 +14,8 @@ def init(handler, window, config):
     configs = config
     methods = {
         'log': eventhandler.getLogs,
-        'login': eventhandler.login
+        'login': eventhandler.login,
+        'get_games': eventhandler.getGames
     }
 
 
@@ -22,32 +23,6 @@ def addHandler(handler):
     global eventhandler
     eventhandler = handler
 
-
-def login(email, password):
-    th = threads.LoginThread(email, password)
-    th.start()
-    ths.append(th)
-
-
-def loginResult(result):
-    if result[0]:
-        windows.loginwindow.statusbar.showMessage('登陆成功，正在跳转...')
-        getGames()
-    else:
-        if result[1] == 0:
-            windows.serverMaintain()
-        else:
-            windows.serverMaintain()
-
-
-def getGames():
-    th = threads.getGamesThread()
-    th.start()
-    ths.append(th)
-
-
-def loginOK(accounts):
-    windows.loginOK(accounts)
 
 
 def configAccount(email, password):
@@ -131,8 +106,10 @@ def showScreenshots(screenshots):
         screenshots['sender'].addScreenshots(screenshots['data'])
 
 
-def process(func: str, args: list, handler=None):
+def process(func: str, args=None, handler=None):
     method = methods[func]
+    if not handler:
+        handler = methods[func + '_handler']
     th = threads.ProcessThread(method, args, handler)
     th.start()
     ths.append(th)

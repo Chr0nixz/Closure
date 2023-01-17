@@ -3,6 +3,7 @@ import os
 
 from resources.lib import router, getImg
 
+
 class Cache():
     def __init__(self, path):
         self.path = os.path.join(path, 'cache')

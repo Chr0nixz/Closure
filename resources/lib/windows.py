@@ -27,12 +27,6 @@ class WindowController():
         self.loginwindow.hide()
         self.gamewindow.show()
 
-    def loginFailed(self):
-        self.loginwindow.loginFailed()
-
-    def serverMaintain(self):
-        QMessageBox.warning(self.loginwindow, '维护中!', '服务器正在维护中，请等待维护结束！', QMessageBox.Ok)
-        self.loginwindow.loginFailed()
 
     def addGames(self, accounts):
         if accounts:

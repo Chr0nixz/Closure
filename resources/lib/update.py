@@ -11,7 +11,7 @@ from resources.ui import CheckUpdateWindow, UpdatingWindow, NewUpdateWindow
 
 
 def check_version(path) -> list:
-    version_path = os.path.join(path, 'resources', 'json', 'version.txt')
+    version_path = os.path.join(path, 'json', 'version.txt')
     current_version = requests.get(
         'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/data_version.txt').text
     if os.path.isfile(version_path):
@@ -75,8 +75,9 @@ class Update():
             self.check_window.updated()
             self.finish()
         else:
+            self.version = updated[1]
             self.check_window = NewUpdateWindow.MainWindow(self.windows.icon, self.update, self.finish)
-            self.check_window.addText(updated[1])
+            self.check_window.addText(self.version)
             self.check_window.show()
 
     def update(self):
@@ -94,10 +95,13 @@ class Update():
         self.check_window.label_2.setText(update)
 
     def finish(self):
+        with open(os.path.join(self.path, 'version.txt'), 'w', encoding='utf-8') as fp:
+            fp.write(self.version)
         self.windows.start()
         self.check_window.hide()
         self.check_window = None
         del self
+
 
 class CheckUpdateThread(QThread):
     update_signal = pyqtSignal(list)
@@ -165,4 +169,3 @@ class DownloadThread(QThread):
                     self.update_signal.emit(item[1])
             else:
                 get_char(self.queue.pop())
-

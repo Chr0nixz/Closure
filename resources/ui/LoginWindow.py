@@ -33,7 +33,7 @@ class MainWindow(QMainWindow, UI_LoginWindow.Ui_LoginWindow):
             self.email_input.setEnabled(False)
             self.password_input.setEnabled(False)
             self.LoginButton.setEnabled(False)
-            event.process('login', [self.email_input.text(), self.password_input.text()], event.loginResult)
+            event.process('login', [self.email_input.text(), self.password_input.text()], self.loginResult)
 
     def loginFailed(self):
         QMessageBox.critical(self, 'Wrong!', '邮箱或密码错误', QMessageBox.Ok)
@@ -41,3 +41,20 @@ class MainWindow(QMainWindow, UI_LoginWindow.Ui_LoginWindow):
         self.password_input.setEnabled(True)
         self.LoginButton.setEnabled(True)
         self.statusBar().showMessage('登陆失败')
+
+    def serverMaintain(self):
+        QMessageBox.critical(self, '维护中', '服务器维护中，请稍后再试！', QMessageBox.Ok)
+        self.email_input.setEnabled(True)
+        self.password_input.setEnabled(True)
+        self.LoginButton.setEnabled(True)
+        self.statusBar().showMessage('服务器维护中')
+
+    def loginResult(self, result):
+        if result[0]:
+            self.statusbar.showMessage('登陆成功，正在跳转...')
+            event.process('get_games', )
+        else:
+            if result[1] == 0:
+                self.serverMaintain()
+            else:
+                self.loginFailed()
