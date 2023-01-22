@@ -10,6 +10,7 @@ class getGamesThread(QThread):
         super().__init__()
         self.getgamessignal.connect(event.loginOK)
 
+
     def run(self) -> None:
         self.getgamessignal.emit(event.eventhandler.getGames())
         event.ths.remove(self)

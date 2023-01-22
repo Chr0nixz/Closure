@@ -15,7 +15,9 @@ def init(handler, window, config):
     methods = {
         'log': eventhandler.getLogs,
         'login': eventhandler.login,
-        'get_games': eventhandler.getGames
+        'get_games': eventhandler.getGames,
+        'get_games_handler': windows.loginOK,
+        'refresh_games': eventhandler.getGames
     }
 
 

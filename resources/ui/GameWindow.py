@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QMainWindow, QFrame, QWidget
 import qtawesome as qta
 
-from . import UI_GameWindow, GameCard
-from ..lib import event
+from resources.ui import UI_GameWindow, GameCard
+from resources.lib import event, gamedata
 
 
 class MainWindow(QMainWindow, UI_GameWindow.Ui_MainWindow):
@@ -15,7 +15,7 @@ class MainWindow(QMainWindow, UI_GameWindow.Ui_MainWindow):
         self.cardwidgets = []
         self.label_2.setProperty('class', 'closure_label')
         self.refreshButton.setIcon(qta.icon('fa.refresh', options=[{'scale_factor': 1, 'color': '#ffd740'}]))
-        self.refreshButton.clicked.connect(event.refreshGames)
+        self.refreshButton.clicked.connect(self.refresh)
 
     def addFrame(self):
         frame = QFrame(self.scrollAreaWidgetContents)
@@ -24,6 +24,25 @@ class MainWindow(QMainWindow, UI_GameWindow.Ui_MainWindow):
         frame.setStyleSheet('border-color: #ffd740;')
         print(frame.pos())
         self.gameframes.append(frame)
+
+    def addGames(self, accounts):
+        if accounts:
+            num = 0
+            for i in accounts:
+                i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
+                                             'name': gamedata.getMapName(i['game_config']['mapId'])}
+                self.addFrame()
+                self.addCard(i, num)
+                num += 1
+
+    def refreshGames(self, accounts):
+        num = 0
+        for i in accounts:
+            i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
+                                         'name': gamedata.getMapName(i['game_config']['mapId'])}
+        for i in self.gamecards:
+            i.refresh(accounts[num])
+            num += 1
 
     def addCard(self, data, num):
         card = GameCard.Widget(self.addCardWidget(), data, num)
@@ -54,3 +73,6 @@ class MainWindow(QMainWindow, UI_GameWindow.Ui_MainWindow):
             i.parent().move(int(((num + col - 1) % col) * (400 + 2 * space) + space) + 30,
                             (((num + col - 1) // col) - 1) * 275 + 5)
         self.scrollAreaWidgetContents.setGeometry(0, 0, self.width(), maxheight)
+
+    def refresh(self):
+        event.process('refresh_games', [], self.refreshGames)

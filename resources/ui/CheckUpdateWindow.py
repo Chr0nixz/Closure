@@ -5,7 +5,7 @@ import qtawesome as qta
 from resources.ui import UI_CheckUpdateWindow
 
 class MainWindow(QMainWindow, UI_CheckUpdateWindow.Ui_MainWindow):
-    def __init__(self, icon):
+    def __init__(self, icon, cancel):
         super().__init__()
         self.setupUi(self)
         self.setWindowIcon(icon)
@@ -17,6 +17,8 @@ class MainWindow(QMainWindow, UI_CheckUpdateWindow.Ui_MainWindow):
         self.loadingIcon.setIconSize(QSize(100, 100))
         self.loadingIcon.setIcon(qta.icon('mdi.loading', color='#ffc107', animation=qta.Spin(self.loadingIcon)))
         self.gridLayout.addWidget(self.loadingIcon)
+        self.pushButton.setIcon(qta.icon('fa.remove', options=[{'scale_factor': 1, 'color': '#ffc107'}]))
+        self.pushButton.clicked.connect(cancel)
 
     def updated(self):
         self.loadingIcon.setIcon(qta.icon('fa5s.check', color='green'))

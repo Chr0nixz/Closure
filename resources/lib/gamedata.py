@@ -17,13 +17,19 @@ def init(path):
 
 def getMapCode(id):
     if id:
-        return stage[id]['code']
+        try:
+            return stage[id]['code']
+        except Exception:
+            return '？'
     else:
         return ''
 
 
 def getMapName(id):
     if id:
-        return stage[id]['name']
+        try:
+            return stage[id]['name']
+        except Exception:
+            return '未知关卡'
     else:
         return ''

@@ -14,8 +14,7 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         self.account = data['config']['account']
         self.platform = data['config']['platform']
         self.detailButton.setEnabled(False)
-        self.serverTag = TagLabel.Tag(12)
-        self.horizontalLayout_5.addWidget(self.serverTag)
+        self.serverTag = TagLabel.Tag(12, self.horizontalLayout_5)
         self.addContent(data)
 
 
@@ -61,7 +60,7 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         self.Account_label.setText(_translate("Form", '账号：' + self.account))
         if self.platform == 1:
             self.serverTag.setText(' 官服')
-            self.serverTag.setFixedSize(43, 24)
+            #self.serverTag.setFixedSize(43, 24)
         else:
             self.serverTag.setText(' B服')
             self.serverTag.setFixedSize(42, 24)

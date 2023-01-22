@@ -5,15 +5,28 @@ respath = './resources/json/'
 
 
 class MainController():
+    """
+    后台主要控制器
+    """
+
     def __init__(self):
         self.token = None
         self.lastGames = None
         self.cache = None
 
-    def setCache(self, cache):
+    def setCache(self, cache=None) -> None:
+        """
+        设置缓存对象
+        :param cache: Cache Object
+        :return: None
+        """
         self.cache = cache
 
     def getStatus(self) -> bool:
+        """
+        获取服务器状态
+        :return: None
+        """
         data = router.getJson('https://ak.dzp.me/ann.json')
         if not data['isMaintain']:
             self.announcement = data['announcement']
@@ -22,6 +35,11 @@ class MainController():
             return False
 
     def login(self, args: list) -> list:
+        """
+        可露希尔账号登录
+        :param args: [email, password]
+        :return: [bool, data]
+        """
         email = args[0]
         password = args[1]
         if self.getStatus():
@@ -36,8 +54,12 @@ class MainController():
             return [False, 0]
 
     def getGames(self) -> list:
+        """
+        获取所有游戏
+        :return: [bool, data] or []
+        """
         data = router.get(url=url + 'Game/', auth=self.token)
-        if data == self.lastgames:
+        if data == self.lastGames:
             return []
         else:
             self.lastGames = data

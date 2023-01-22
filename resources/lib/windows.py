@@ -22,30 +22,10 @@ class WindowController():
     def loginOK(self, accounts):
         self.gamewindow = GameWindow.MainWindow()
         self.gamewindow.setWindowIcon(self.icon)
-        self.addGames(accounts)
+        self.gamewindow.addGames(accounts)
         self.gamewindow.addAnnouncement(event.getAnnouncement())
         self.loginwindow.hide()
         self.gamewindow.show()
-
-
-    def addGames(self, accounts):
-        if accounts:
-            num = 0
-            for i in accounts:
-                i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
-                                             'name': gamedata.getMapName(i['game_config']['mapId'])}
-                self.gamewindow.addFrame()
-                self.gamewindow.addCard(i, num)
-                num += 1
-
-    def refreshGames(self, accounts):
-        num = 0
-        for i in accounts:
-            i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
-                                         'name': gamedata.getMapName(i['game_config']['mapId'])}
-        for i in self.gamewindow.gamecards:
-            i.refresh(accounts[num])
-            num += 1
 
     def openDetail(self, data):
         if data['account'] in self.detailwindows:
@@ -54,6 +34,3 @@ class WindowController():
         detail.setWindowIcon(self.icon)
         detail.show()
         self.detailwindows[data['account']] = detail
-
-    def detailMessage(self, account, title, text):
-        message = QMessageBox.information(self.detailwindows[account], title, text, QMessageBox.Ok)

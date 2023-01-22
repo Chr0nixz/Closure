@@ -63,7 +63,7 @@ class Update():
     def __init__(self, path, window):
         self.path = os.path.join(path, 'resources')
         self.windows = window
-        self.check_window = CheckUpdateWindow.MainWindow(self.windows.icon)
+        self.check_window = CheckUpdateWindow.MainWindow(self.windows.icon, self.check_cancel)
 
     def start(self):
         self.check_window.show()
@@ -101,6 +101,17 @@ class Update():
         self.check_window.hide()
         self.check_window = None
         del self
+
+    def cancel(self):
+        self.windows.start()
+        self.check_window.hide()
+        self.check_window = None
+        del self
+
+    def check_cancel(self):
+        if hasattr(self, 'checkUpdateThread'):
+            self.checkUpdateThread = None
+            self.cancel()
 
 
 class CheckUpdateThread(QThread):
