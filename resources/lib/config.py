@@ -18,7 +18,7 @@ class Config():
             self.config["account"] = {"email": email, "password": password}
             json.dump(self.config, file, indent=4)
 
-    def addConfig(self, name:str, value):
+    def addConfig(self, name: str, value):
         """
         将某项设置加入config.json
         :param name:格式：a.b.c
@@ -26,8 +26,11 @@ class Config():
         :return: bool
         """
         name = list(name.split('.'))
-        for i in name:
-            cur = self.config[i]
+        cur = self.config[name[0]]
+        if len(name) > 1:
+            name = name[:1]
+            for i in name:
+                cur = cur[i]
         cur = value
 
 
