@@ -12,18 +12,20 @@ from resources.ui import CheckUpdateWindow, UpdatingWindow, NewUpdateWindow
 
 def check_version(path) -> list:
     version_path = os.path.join(path, 'json', 'version.txt')
-    current_version = requests.get(
-        'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/data_version.txt').text
+    try:
+        current_version = requests.get(
+            'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/data_version.txt').text
+    except requests.exceptions.ConnectionError:
+        return [False, '访问 raw.githubusercontent.com 失败！']
     if os.path.isfile(version_path):
         with open(version_path, 'r', encoding='utf-8') as fp:
             if fp.read() == current_version:
                 print('1')
                 return [True, current_version]
             else:
-                return [False]
+                return [True, False]
     else:
         return [True, current_version]
-
 
 def get_jsons(path):
     try:
@@ -71,14 +73,18 @@ class Update():
         self.checkUpdateThread.start()
 
     def isUpdated(self, updated):
-        if not updated[0]:
-            self.check_window.updated()
-            self.finish()
+        if updated[0]:
+            if not updated[1]:
+                self.check_window.updated()
+                self.finish()
+            else:
+                self.version = updated[1]
+                self.check_window = NewUpdateWindow.MainWindow(self.windows.icon, self.update, self.finish)
+                self.check_window.addText(self.version)
+                self.check_window.show()
         else:
-            self.version = updated[1]
-            self.check_window = NewUpdateWindow.MainWindow(self.windows.icon, self.update, self.finish)
-            self.check_window.addText(self.version)
-            self.check_window.show()
+            self.exception(updated[1])
+
 
     def update(self):
         self.check_window = UpdatingWindow.MainWindow()
@@ -86,8 +92,8 @@ class Update():
         self.updateThread = UpdateThread(self, self.path, None)
         self.updateThread.start()
 
-    def exception(self):
-        QMessageBox.critical(self.check_window, '错误', '检查更新失败！', QMessageBox.Ok)
+    def exception(self, text):
+        QMessageBox.critical(self.check_window, '错误', text, QMessageBox.Ok)
         self.check_window = None
         self.windows.start()
 
@@ -131,7 +137,7 @@ class UpdateThread(QThread):
     update_signal = pyqtSignal(str)
     value_signal = pyqtSignal(int)
     finish_signal = pyqtSignal(bool)
-    exception_signal = pyqtSignal(bool)
+    exception_signal = pyqtSignal(str)
 
     def __init__(self, parent, path, call):
         super().__init__()
@@ -145,7 +151,7 @@ class UpdateThread(QThread):
         if n := get_jsons(self.path):
             items, stage = n
         else:
-            self.exception_signal.emit(True)
+            self.exception_signal.emit('获取游戏数据文件时失败！\n请检查网络连接！')
             return
         items_queue = []
         self.workers = []

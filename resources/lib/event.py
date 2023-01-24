@@ -115,3 +115,6 @@ def process(func: str, args=None, handler=None):
     th = threads.ProcessThread(method, args, handler)
     th.start()
     ths.append(th)
+
+def addConfig(name:str, value):
+    pass

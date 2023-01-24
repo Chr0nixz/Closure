@@ -28,11 +28,14 @@ class MainController():
         :return: None
         """
         data = router.getJson('https://ak.dzp.me/ann.json')
-        if not data['isMaintain']:
-            self.announcement = data['announcement']
-            return True
+        if data:
+            if not data['isMaintain']:
+                self.announcement = data['announcement']
+                return [True, 1]
+            else:
+                return [True, 0]
         else:
-            return False
+            return [False, '获取服务器状态失败！']
 
     def login(self, args: list) -> list:
         """

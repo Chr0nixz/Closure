@@ -17,3 +17,17 @@ class Config():
         with open(self.path, 'w+', encoding='utf-8') as file:
             self.config["account"] = {"email": email, "password": password}
             json.dump(self.config, file, indent=4)
+
+    def addConfig(self, name:str, value):
+        """
+        将某项设置加入config.json
+        :param name:格式：a.b.c
+        :param value: 值
+        :return: bool
+        """
+        name = list(name.split('.'))
+        for i in name:
+            cur = self.config[i]
+        cur = value
+
+

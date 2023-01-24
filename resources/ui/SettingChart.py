@@ -19,14 +19,11 @@ class Widget(QtWidgets.QWidget, UI_SettingChart.Ui_Form):
 
     def addContent(self):
         self.Account.setText('账号：' + self.account)
-        self.serverTag = TagLabel.Tag(12)
-        self.horizontalLayout.addWidget(self.serverTag)
+        self.serverTag = TagLabel.Tag(12, self.horizontalLayout)
         if self.platform == 1:
             self.serverTag.setText(' 官服')
-            self.serverTag.setFixedSize(43, 24)
         else:
             self.serverTag.setText(' B服')
-            self.serverTag.setFixedSize(42, 24)
         self.APBox.setMaximum(self.maxAP)
         self.APBox.setValue(self.config['keepingAP'])
         self.RecuritBox.setValue(self.config['recruitReserve'])

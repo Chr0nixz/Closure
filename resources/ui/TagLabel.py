@@ -9,7 +9,8 @@ class Tag(QLabel):
         self.setSizePolicy(self.sizePolicy)
         parent.addWidget(self)
         self.setProperty('class', 'tag')
-        font = QFont(pointSize=size)
+        font = QFont()
+        font.setPointSize(size)
         font.setBold(True)
         font.setWeight(75)
         self.setFont(font)
@@ -17,6 +18,6 @@ class Tag(QLabel):
 
     def setText(self, text: str) -> None:
         super().setText(text)
-        self.height = self.height() + 10
-        self.width = self.width() + 7
+        self.height = self.fontMetrics().height() + 8
+        self.width = self.fontMetrics().width(text)
         self.setFixedSize(self.width, self.height)

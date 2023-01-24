@@ -1,8 +1,8 @@
 import time
-
+import qtawesome as qta
 from PyQt5 import QtWidgets
 
-from . import UI_DoctorChart, TagLabel
+from resources.ui import UI_DoctorChart, TagLabel
 
 
 class Widget(QtWidgets.QWidget, UI_DoctorChart.Ui_Form):
@@ -16,10 +16,8 @@ class Widget(QtWidgets.QWidget, UI_DoctorChart.Ui_Form):
 
     def addContent(self):
         self.NickName.setText('Dr.' + self.data['nickName'])
-        self.levelTag = TagLabel.Tag(12)
+        self.levelTag = TagLabel.Tag(12, self.horizontalLayout_3)
         self.levelTag.setText(' Lv.' + str(self.data['level']))
-        self.levelTag.setFixedSize(53, 24)
-        self.horizontalLayout_3.addWidget(self.levelTag)
         now = time.time()
         lastAPtime = self.data['lastApAddTime']
         maxAP = self.data['maxAp']
@@ -54,3 +52,9 @@ class Widget(QtWidgets.QWidget, UI_DoctorChart.Ui_Form):
         elif value > 100:
             self.APDescription.setText('这么多理智，可露希尔要累死啦！')
             self.APBar.setProperty('class', 'danger')
+        self.startButton.setProperty('class', 'success')
+        self.startButton.setIcon(qta.icon('mdi.power', options=[{'scale_factor': 1.4, 'color': 'green'}]))
+        self.pauseButton.setIcon(qta.icon('mdi.pause', options=[{'scale_factor': 1.4, 'color': '#ffd740'}]))
+        self.deleteButton.setProperty('class', 'danger')
+        self.deleteButton.setIcon(qta.icon('mdi.delete-forever', options=[{'scale_factor': 1.4, 'color': 'red'}]))
+        self.refreshButton.setIcon(qta.icon('fa.refresh', options=[{'scale_factor': 1, 'color': '#ffd740'}]))

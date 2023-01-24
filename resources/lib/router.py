@@ -24,6 +24,8 @@ def get(url, auth=None):
         return False
     except StatusError:
         return False
+    except requests.exceptions.ConnectionError:
+        return False
 
 
 def getJson(url):
