@@ -59,14 +59,18 @@ class MainController():
     def getGames(self) -> list:
         """
         获取所有游戏
-        :return: [bool, data] or []
+        :return: [bool, data] or [bool]
         """
         data = router.get(url=url + 'Game/', auth=self.token)
-        if data == self.lastGames:
-            return []
+        print(self.lastGames)
+        if data:
+            if data == self.lastGames:
+                return [True, None]
+            else:
+                self.lastGames = data
+                return [True, data]
         else:
-            self.lastGames = data
-            return data
+            return [False]
 
     def getAnnouncement(self):
         data = router.get(url=url + 'System/Announcement', auth=self.token)
@@ -76,14 +80,14 @@ class MainController():
         data = router.get(url=url + 'Game/' + account + '/' + str(platform), auth=self.token)
         return data
 
-    def gameLogin(self, account, platform):
-        body = {'account': account, 'platform': platform}
+    def gameLogin(self, args):
+        body = {'account': args[0], 'platform': args[1]}
         data = router.post(url=url + 'Game/Login/', auth=self.token, body=body)
         if data:
             if data['code'] == 1:
-                return True
+                return [True]
         else:
-            return False
+            return [False]
 
     def gamePause(self, account, platform):
         config = self.getConfig(account, platform)
@@ -91,9 +95,9 @@ class MainController():
         data = router.post(url=url + 'Game/Config/' + account + '/' + str(platform), auth=self.token, body=config)
         if data:
             if data['code'] == 1:
-                return True
+                return [True]
         else:
-            return False
+            return [False]
 
     def getConfig(self, account, platform):
         data = router.get(url=url + 'Game/Config/' + account + '/' + str(platform), auth=self.token)

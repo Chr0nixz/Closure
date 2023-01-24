@@ -1,9 +1,9 @@
 import os
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QMessageBox
 
-from resources.lib import event, gamedata
-from resources.ui import LoginWindow, GameWindow, DetailWindow, CheckUpdateWindow
+from PyQt5.QtGui import QIcon
+
+from resources.lib import event
+from resources.ui import LoginWindow, GameWindow, DetailWindow
 
 
 class WindowController():

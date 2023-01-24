@@ -17,7 +17,9 @@ def init(handler, window, config):
         'login': eventhandler.login,
         'get_games': eventhandler.getGames,
         'get_games_handler': windows.loginOK,
-        'refresh_games': eventhandler.getGames
+        'refresh_games': eventhandler.getGames,
+        'game_login': eventhandler.gameLogin,
+        'game_pause': eventhandler.gamePause
     }
 
 
@@ -47,7 +49,7 @@ def refreshGames():
 
 def refreshResult(data):
     if not data == []:
-        windows.refreshGames(data)
+        refreshGames(data)
 
 
 def getDetail(account, platform):

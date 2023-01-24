@@ -26,26 +26,32 @@ class MainWindow(QMainWindow, UI_GameWindow.Ui_MainWindow):
         self.gameframes.append(frame)
 
     def addGames(self, accounts):
-        if accounts:
-            num = 0
-            for i in accounts:
-                i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
-                                             'name': gamedata.getMapName(i['game_config']['mapId'])}
-                self.addFrame()
-                self.addCard(i, num)
-                num += 1
+        if accounts[0]:
+            accounts = accounts[1]
+            if accounts:
+                num = 0
+                for i in accounts:
+                    i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
+                                                 'name': gamedata.getMapName(i['game_config']['mapId'])}
+                    self.addFrame()
+                    self.addCard(i, num)
+                    num += 1
 
     def refreshGames(self, accounts):
-        num = 0
-        for i in accounts:
-            i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
-                                         'name': gamedata.getMapName(i['game_config']['mapId'])}
-        for i in self.gamecards:
-            i.refresh(accounts[num])
-            num += 1
+        print(accounts)
+        if accounts[0]:
+            accounts = accounts[1]
+            if accounts:
+                num = 0
+                for i in accounts:
+                    i['game_config']['mapId'] = {'code': gamedata.getMapCode(i['game_config']['mapId']),
+                                                 'name': gamedata.getMapName(i['game_config']['mapId'])}
+                for i in self.gamecards:
+                    i.refresh(accounts[num])
+                    num += 1
 
     def addCard(self, data, num):
-        card = GameCard.Widget(self.addCardWidget(), data, num)
+        card = GameCard.Widget(self.addCardWidget(), self, data, num)
         self.gamecards.append(card)
 
     def addCardWidget(self):

@@ -54,4 +54,4 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "更新中"))
         self.label.setText(_translate("MainWindow", "正在更新..."))
-        self.label_2.setText(_translate("MainWindow", "TextLabel"))
+        self.label_2.setText(_translate("MainWindow", "正在下载数据文件"))

@@ -471,6 +471,10 @@
         "name": "寻访数据契约",
         "icon": "LMTGS_COIN_3301"
     },
+    "LMTGS_COIN_3501": {
+        "name": "寻访数据契约",
+        "icon": "LMTGS_COIN_3501"
+    },
     "EPGS_COIN": {
         "name": "寻访参数模型",
         "icon": "EPGS_COIN"
@@ -583,6 +587,26 @@
         "name": "桂子落",
         "icon": "ap_supply_lt_120_2022_4"
     },
+    "ap_supply_lt_100_2023_1": {
+        "name": "摘自画卷的柿子",
+        "icon": "ap_supply_lt_100_2023_1"
+    },
+    "ap_supply_lt_100_2023_2": {
+        "name": "香脆桃酥饼",
+        "icon": "ap_supply_lt_100_2023_2"
+    },
+    "ap_supply_lt_100_2023_3": {
+        "name": "香辣火炉",
+        "icon": "ap_supply_lt_100_2023_3"
+    },
+    "ap_supply_lt_100_2023_4": {
+        "name": "金糖年糕",
+        "icon": "ap_supply_lt_100_2023_4"
+    },
+    "ap_supply_lt_100_2023_5": {
+        "name": "木瓜叶馅饼",
+        "icon": "ap_supply_lt_100_2023_5"
+    },
     "EXTERMINATION_AGENT": {
         "name": "PRTS剿灭代理卡",
         "icon": "EXTERMINATION_AGENT"
@@ -630,6 +654,10 @@
     "LIMITED_TKT_GACHA_10_3301": {
         "name": "归狼踏影寻访凭证",
         "icon": "LIMITED_TKT_GACHA_10_3301"
+    },
+    "LIMITED_TKT_GACHA_10_3501": {
+        "name": "长风万里寻访凭证",
+        "icon": "LIMITED_TKT_GACHA_10_3501"
     },
     "voucher_item_4pick1": {
         "name": "干员兑换券",
@@ -754,6 +782,42 @@
     "voucher_chip": {
         "name": "芯片自助打印盒",
         "icon": "voucher_chip"
+    },
+    "voucher_chipPackage": {
+        "name": "自助芯片组印刻仪",
+        "icon": "voucher_chipPackage"
+    },
+    "itempack_mod_7": {
+        "name": "先锋芯片组印刻仪",
+        "icon": "itempack_mod_7"
+    },
+    "itempack_mod_8": {
+        "name": "近卫芯片组印刻仪",
+        "icon": "itempack_mod_8"
+    },
+    "itempack_mod_9": {
+        "name": "重装芯片组印刻仪",
+        "icon": "itempack_mod_9"
+    },
+    "itempack_mod_10": {
+        "name": "狙击芯片组印刻仪",
+        "icon": "itempack_mod_10"
+    },
+    "itempack_mod_11": {
+        "name": "术士芯片组印刻仪",
+        "icon": "itempack_mod_11"
+    },
+    "itempack_mod_12": {
+        "name": "医疗芯片组印刻仪",
+        "icon": "itempack_mod_12"
+    },
+    "itempack_mod_13": {
+        "name": "辅助芯片组印刻仪",
+        "icon": "itempack_mod_13"
+    },
+    "itempack_mod_14": {
+        "name": "特种芯片组印刻仪",
+        "icon": "itempack_mod_14"
     },
     "randomMaterialRune_0": {
         "name": "荒芜行动物资补给",
@@ -1811,6 +1875,14 @@
         "name": "谜图的信物",
         "icon": "p_char_4017_puzzle"
     },
+    "p_char_4078_bdhkgt": {
+        "name": "截云的信物",
+        "icon": "p_char_4078_bdhkgt"
+    },
+    "p_char_493_firwhl": {
+        "name": "火哨的信物",
+        "icon": "p_char_493_firwhl"
+    },
     "p_char_103_angel": {
         "name": "能天使的信物",
         "icon": "p_char_103_angel"
@@ -2079,6 +2151,14 @@
         "name": "焰影苇草的信物",
         "icon": "p_char_1020_reed2"
     },
+    "p_char_4080_lin": {
+        "name": "林的信物",
+        "icon": "p_char_4080_lin"
+    },
+    "p_char_2024_chyue": {
+        "name": "重岳的信物",
+        "icon": "p_char_2024_chyue"
+    },
     "voucher_full_ceylon": {
         "name": "锡兰的私人信件",
         "icon": "voucher_full_ceylon"
@@ -2130,6 +2210,10 @@
     "voucher_full_robin": {
         "name": "罗宾的私人信件",
         "icon": "voucher_full_robin"
+    },
+    "voucher_full_lava2": {
+        "name": "炎狱炎熔的私人信件",
+        "icon": "voucher_full_lava2"
     },
     "uni_set_guitar": {
         "name": "火蓝之心家具收藏包",
@@ -2607,6 +2691,10 @@
         "name": "蚀刻弹弹壳",
         "icon": "act16side_token_bolt"
     },
+    "act16side_token_bolt_rep_1": {
+        "name": "蚀刻弹弹壳",
+        "icon": "act16side_token_bolt"
+    },
     "medal_activity_15side_01": {
         "name": "“诗酒乘兴”",
         "icon": "medal_activity_15side_01"
@@ -2758,5 +2846,13 @@
     "act2bossrush_relic_04": {
         "name": "调优重载",
         "icon": "act2bossrush_relic_04"
+    },
+    "uni_set_inkArt": {
+        "name": "画中人家具收藏包",
+        "icon": "uni_set_inkArt"
+    },
+    "act23side_token_spirit": {
+        "name": "新酿烈刀子",
+        "icon": "act23side_token_spirit"
     }
 }

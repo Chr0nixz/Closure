@@ -48,7 +48,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>正在下载数据文件</string>
         </property>
        </widget>
       </item>

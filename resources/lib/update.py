@@ -42,12 +42,14 @@ def get_jsons(path):
 
 def get_item(img_path, img_name) -> str:
     url = 'https://ak.dzp.me/dst/items/' + img_name + '.webp'
-    content = requests.get(url).content
     try:
+        content = requests.get(url).content
         image = Image.open(io.BytesIO(content))
         image.save(img_path)
+    except requests.exceptions.ConnectionError:
+        return False
     except Exception:
-        print(img_name)
+        return False
 
 
 def get_char(img_path, img_name) -> None:
@@ -66,24 +68,28 @@ class Update():
         self.path = os.path.join(path, 'resources')
         self.windows = window
         self.check_window = CheckUpdateWindow.MainWindow(self.windows.icon, self.check_cancel)
+        self.threads = []
+        self.canceled = False
 
     def start(self):
         self.check_window.show()
-        self.checkUpdateThread = CheckUpdateThread(self.path, self.isUpdated)
-        self.checkUpdateThread.start()
+        checkUpdateThread = CheckUpdateThread(self.path, self.isUpdated)
+        checkUpdateThread.start()
+        self.threads.append(checkUpdateThread)
 
     def isUpdated(self, updated):
-        if updated[0]:
-            if not updated[1]:
-                self.check_window.updated()
-                self.finish()
+        if not self.canceled:
+            if updated[0]:
+                if not updated[1]:
+                    self.check_window.updated()
+                    self.finish()
+                else:
+                    self.version = updated[1]
+                    self.check_window = NewUpdateWindow.MainWindow(self.windows.icon, self.update, self.finish)
+                    self.check_window.addText(self.version)
+                    self.check_window.show()
             else:
-                self.version = updated[1]
-                self.check_window = NewUpdateWindow.MainWindow(self.windows.icon, self.update, self.finish)
-                self.check_window.addText(self.version)
-                self.check_window.show()
-        else:
-            self.exception(updated[1])
+                self.exception(updated[1])
 
 
     def update(self):
@@ -109,15 +115,17 @@ class Update():
         del self
 
     def cancel(self):
+        self.canceled = True
+        for i in self.threads:
+            i.quit()
+        self.threads = None
         self.windows.start()
-        self.check_window.hide()
         self.check_window = None
         del self
 
     def check_cancel(self):
-        if hasattr(self, 'checkUpdateThread'):
-            self.checkUpdateThread = None
-            self.cancel()
+        self.check_window.hide()
+        self.cancel()
 
 
 class CheckUpdateThread(QThread):
@@ -181,8 +189,8 @@ class DownloadThread(QThread):
             if self.type == 0:
                 item = self.queue.pop()
                 if get_item(item[0], item[1]):
-                    self.update_signal.emit(item[1])
+                    self.update_signal.emit('下载' + item[1] + '成功')
                 else:
-                    self.update_signal.emit(item[1])
+                    self.update_signal.emit('下载' + item[1] + '失败')
             else:
                 get_char(self.queue.pop())

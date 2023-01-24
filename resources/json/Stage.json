@@ -2234,6 +2234,105 @@
             "3282"
         ]
     },
+    "act23side_01": {
+        "name": "塞上春来",
+        "code": "WB-1",
+        "ap": 9,
+        "items": [
+            "act23side_token_spirit",
+            "30031",
+            "30061",
+            "30041",
+            "30051",
+            "30021",
+            "30011"
+        ]
+    },
+    "act23side_02": {
+        "name": "沙海黄尘",
+        "code": "WB-2",
+        "ap": 9,
+        "items": [
+            "act23side_token_spirit",
+            "30031",
+            "30061",
+            "30041",
+            "30051",
+            "30021",
+            "30011"
+        ]
+    },
+    "act23side_03": {
+        "name": "树犹如此",
+        "code": "WB-3",
+        "ap": 9,
+        "items": [
+            "act23side_token_spirit",
+            "30031",
+            "30061",
+            "30041",
+            "30051",
+            "30021",
+            "30011"
+        ]
+    },
+    "act23side_04": {
+        "name": "不念往昔",
+        "code": "WB-4",
+        "ap": 12,
+        "items": [
+            "act23side_token_spirit",
+            "30042",
+            "30022"
+        ]
+    },
+    "act23side_05": {
+        "name": "风雨欲来",
+        "code": "WB-5",
+        "ap": 12,
+        "items": [
+            "act23side_token_spirit",
+            "30052",
+            "30062"
+        ]
+    },
+    "act23side_06": {
+        "name": "瑟瑟秋华",
+        "code": "WB-6",
+        "ap": 12,
+        "items": [
+            "act23side_token_spirit",
+            "30062",
+            "30022"
+        ]
+    },
+    "act23side_07": {
+        "name": "“屏风卫”",
+        "code": "WB-7",
+        "ap": 21,
+        "items": [
+            "act23side_token_spirit",
+            "30053"
+        ]
+    },
+    "act23side_08": {
+        "name": "旷古之晤",
+        "code": "WB-8",
+        "ap": 21,
+        "items": [
+            "act23side_token_spirit",
+            "30083"
+        ]
+    },
+    "act23side_09": {
+        "name": "“冬藏”",
+        "code": "WB-9",
+        "ap": 21,
+        "items": [
+            "act23side_token_spirit",
+            "31033"
+        ]
+    },
     "act22side_01": {
         "name": "逃离与追逐",
         "code": "FC-1",

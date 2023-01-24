@@ -1,15 +1,18 @@
 import qtawesome as qta
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QSize, QCoreApplication
+from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import QWidget, QPushButton, QMessageBox
 
-from . import UI_GameCard, TagLabel
-from ..lib import event
+from resources.ui import UI_GameCard, TagLabel
+from resources.lib import event
 
 
-class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
-    def __init__(self, parent, data, num):
+class Widget(QWidget, UI_GameCard.Ui_Form):
+    def __init__(self, parent, window, data, num):
         super().__init__(parent)
         self.setupUi(parent)
         self.setFixedSize(320, 240)
+        self.parentWindow = window
         self.num = num
         self.account = data['config']['account']
         self.platform = data['config']['platform']
@@ -30,10 +33,10 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         self.detailButton.show()
 
     def addStatusButton(self):
-        statusButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        statusButton.setMinimumSize(QtCore.QSize(0, 35))
-        statusButton.setMaximumSize(QtCore.QSize(140, 16777215))
-        font = QtGui.QFont()
+        statusButton = QPushButton(self.horizontalLayoutWidget)
+        statusButton.setMinimumSize(QSize(0, 35))
+        statusButton.setMaximumSize(QSize(140, 16777215))
+        font = QFont()
         font.setPointSize(12)
         statusButton.setFont(font)
         statusButton.setObjectName("statusButton")
@@ -42,25 +45,24 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         return statusButton
 
     def addDetailButton(self):
-        detailButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        detailButton.setMinimumSize(QtCore.QSize(0, 35))
-        detailButton.setMaximumSize(QtCore.QSize(140, 16777215))
-        font = QtGui.QFont()
+        detailButton = QPushButton(self.horizontalLayoutWidget)
+        detailButton.setMinimumSize(QSize(0, 35))
+        detailButton.setMaximumSize(QSize(140, 16777215))
+        font = QFont()
         font.setPointSize(12)
         detailButton.setFont(font)
         detailButton.setObjectName("detailButton")
         detailButton.setText(' 详 情')
-        detailButton.setIconSize(QtCore.QSize(20, 20))
+        detailButton.setIconSize(QSize(20, 20))
         detailButton.setEnabled(False)
         self.horizontalLayout.addWidget(detailButton)
         return detailButton
 
     def addContent(self, data):
-        _translate = QtCore.QCoreApplication.translate
+        _translate = QCoreApplication.translate
         self.Account_label.setText(_translate("Form", '账号：' + self.account))
         if self.platform == 1:
             self.serverTag.setText(' 官服')
-            #self.serverTag.setFixedSize(43, 24)
         else:
             self.serverTag.setText(' B服')
             self.serverTag.setFixedSize(42, 24)
@@ -114,9 +116,15 @@ class Widget(QtWidgets.QWidget, UI_GameCard.Ui_Form):
         event.getDetail(self.account, self.platform)
 
     def gameLogin(self):
-        self.statusButton.setText('登陆中')
-        self.statusButton.setEnabled(False)
-        event.gameLogin(self.account, self.platform)
+        event.process('game_login', [self.account, self.platform], self.gameLoginResult)
+
+    def gameLoginResult(self, result):
+        if result:
+            self.parentWindow.statusbar.showMessage('提交登录请求成功！')
+        else:
+            self.parentWindow.statusbar.showMessage('提交登录请求失败！')
+            QMessageBox.critical(self.parentWindow, 'Error!', '提交登录请求失败！', QMessageBox.Ok)
+        self.parentWindow.refresh()
 
     def gamePause(self):
         self.statusButton.setText('暂停中')
