@@ -25,12 +25,11 @@ class Config():
         :param value: 值
         :return: bool
         """
-        name = list(name.split('.'))
-        cur = self.config[name[0]]
-        if len(name) > 1:
-            name = name[:1]
-            for i in name:
+        if '.' in name:
+            name = list(name.split('.'))
+            cur = self.config
+            for i in name[:-1]:
                 cur = cur[i]
-        cur = value
-
-
+            cur[name[-1]] = value
+        else:
+            self.config[name] = value
